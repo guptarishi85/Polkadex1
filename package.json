@@ -14,12 +14,13 @@
   "devDependencies": {
     "@cucumber/cucumber": "^9.4.0",
     "@cucumber/pretty-formatter": "^1.0.0",
+    "@playwright/test": "^1.33.0",
     "chai": "^4.3.8",
-    "cucumber-html-reporter": "^7.1.1",
-    "playwright": "^1.37.1",
-    "@playwright/test": "^1.33.0"
+    "cucumber-html-reporter": "^6.0.0",
+    "playwright": "^1.37.1"
   },
   "dependencies": {
+    "cucumber-tsflow": "^4.2.1",
     "npm-check-updates": "^16.13.2",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"

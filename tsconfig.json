@@ -5,7 +5,11 @@
     "target": "ES2022",
     "lib": ["es2021", "dom"],
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+//    "strict": true
+    
+
   },
   "include": [
     "./config/**/*",
