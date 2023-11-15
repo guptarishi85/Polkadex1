@@ -5,7 +5,7 @@ setDefaultTimeout(60*1000);
 
 let page;
 Given('I am on the home screen',{timeout: 2 * 5000}, async function() {
-  await new Promise((resolve) => setTimeout(resolve, 5000));
+ // await new Promise((resolve) => setTimeout(resolve, 5000));
   this.page = page;
   const homePage = new HomePage();
   await homePage.navigateToHomePage();
@@ -37,7 +37,38 @@ Then('I see in title {string}', async function(title: string) {
     const homePage = new HomePage();
   await homePage.getCount();
     });
-  
+
+    
+When('I click on Start Trading button', async function(){
+  await global.page.waitForTimeout(10000);
+  const homePage = new HomePage();
+  await homePage.clickStButton();
+  });
+
+Then('I can see DOT\\/USTD Text on screen', async function(){
+  await global.page.waitForTimeout(10000);
+  const homePage = new HomePage();
+  await homePage.verifyDotUSDText();
+  });
+
+Then('I can see Buy button on screen', async function () {
+  await global.page.waitForTimeout(10000);
+  const homePage = new HomePage();
+  await homePage.verifyBuyButton();
+  });
+
+When('I click on Buy link', async function () {
+    await global.page.waitForTimeout(10000);
+    const homePage = new HomePage();
+    await homePage.clickBuyButton();
+    });  
+
+Then('I can select {int}% button', async function (value : number) {
+  await global.page.waitForTimeout(10000);
+  const homePage = new HomePage();
+  await homePage.clickPercentButton(value);
+  });
+
 function expect(homePage: HomePage) {
   throw new Error('Function not implemented.');
 }

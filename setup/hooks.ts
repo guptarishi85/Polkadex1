@@ -1,42 +1,34 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.page = exports.browser = void 0;
 const playwright = require('playwright');
-const { BeforeAll, Before, After, AfterAll , Status } = require('@cucumber/cucumber');
+const { BeforeAll, Before, After, AfterAll, Status } = require('@cucumber/cucumber');
 const cucumber = require('@cucumber/cucumber');
-import {chromium, Browser, Page, Locator} from 'playwright';
-
-
-export let browser: Browser;
-export let page: Page;
-
 const options = {
-  headless: false,
-  slowMo: 100
+    headless: false,
+    slowMo: 100
 };
-
 BeforeAll(async () => {
-  console.log('before all ...');
-  global.browser = await playwright['chromium'].launch(options);
+    console.log('before all ...');
+    global.browser = await playwright['chromium'].launch(options);
 });
-
-AfterAll(async () => {
-  console.log('after all ...');
-  await global.browser.close();
-});
-
+/*AfterAll(async () => {
+    console.log('after all ...');
+    await global.browser.close();
+});*/
 Before(async () => {
-  console.log('before ...');
-  global.context = await global.browser.newContext();
-  global.page = await global.context.newPage();
+    console.log('before ...');
+    global.context = await global.browser.newContext();
+    global.page = await global.context.newPage();
 });
-
 After(async () => {
-  console.log('after pass...');
-  await global.page.close();
-  await global.context.close();
+    console.log('after pass...');
+    await global.page.close();
+    await global.context.close();
 });
-
 After(async function (scenario) {
-  if (scenario.result.status === Status.FAILED) {
-    var buffer = await global.page.screenshot({ path: `reports/${scenario.pickle.name}.png`, fullPage: true })
-    this.attach(buffer, 'image/png');
-  }
+    if (scenario.result.status === Status.FAILED) {
+        var buffer = await global.page.screenshot({ path: `reports/${scenario.pickle.name}.png`, fullPage: true });
+        this.attach(buffer, 'image/png');
+    }
 });
