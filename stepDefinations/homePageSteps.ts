@@ -5,7 +5,6 @@ setDefaultTimeout(60*1000);
 
 let page;
 Given('I am on the home screen',{timeout: 2 * 5000}, async function() {
- // await new Promise((resolve) => setTimeout(resolve, 5000));
   this.page = page;
   const homePage = new HomePage();
   await homePage.navigateToHomePage();

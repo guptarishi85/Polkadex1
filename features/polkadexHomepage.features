@@ -1,3 +1,4 @@
+@Market
 Feature: Login Page
 
  As a user 
@@ -11,7 +12,6 @@ Feature: Login Page
 #  When I click the Orderbook logo
 #  Then I see in title "Polkadex Orderbook"
 
-@Market
 Scenario: Validate functionalities of Polkadex after clicking Start Trading button  
 Given I am on the home screen
 When I click on Start Trading button
