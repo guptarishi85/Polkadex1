@@ -1,16 +1,15 @@
-Feature: Balances Page
+Feature: BalancePage_Pop-up_Transfer_Back button verification
 
- As a user 
- I want to test
- Polkadex Balances Page
+As a user 
+I want to test
+Pop-up_Deposit_Next buttonPage on Balances page
 
 Background:
  Given I am on the home screen
  And I click on Start Trading button
  And I can see DOT/USTD Text on screen
 
-
-Scenario: Verify Import Button functionality and Balance Page functionalities
+Scenario: Pop-up_Transfer_Back button Balances Screen
 And I click on login link
 And I enter the email as "hjose@4labsinc.com"
 And I enter the password as "Leena@2010"
@@ -35,18 +34,9 @@ And I click on the Import Button under add trading account window
 Then Trading Account imported successfully
 Then I click on back button under add trading account window
 When I click on Balances link on Polkadex page
-Then I can see What is Deposit? popup
+And I can see What is Deposit? popup
+Then I am able to select Dont show again checkbox on What is Deposit? popup
 Then I click on Next button on What is Deposit? popup
 Then I can see What is Withdrawal? popup
-Then I click on Next button on What is Withdrawal? popup
-Then I can see What is transfer? popup
-Then I click on Done button on What is transfer? popup  
-Then I see text as "Available balance in your funding and trading account. on balance page"
-Then I can get the list of cloumn header names under Overview Section 
-Then I click on the Name Cloumn header
-Then I click on the Funding Account Cloumn header
-Then I click on the Trading Account Cloumn header
-Then I click on the In Orders Cloumn header
-Then I am able to select Hide small balances checkbox
-When I searched text "DOT" in search bar of overview Section
-Then searched item should display under overview Section
+When I click on back button on What is Withdrawal? popup
+Then I can see What is Deposit? popup

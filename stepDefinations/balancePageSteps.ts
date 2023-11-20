@@ -5,6 +5,7 @@ import { expect } from "@playwright/test";
 setDefaultTimeout(60 * 1000);
 
 let Page;
+
 When('I click on login link', async function(){
     this.balPage = Page;
     const balPage = new BalPage();
@@ -43,12 +44,6 @@ Then('I can see Create Account button', async function () {
     await global.page.waitForTimeout(10000);
     const balPage = new BalPage();
     await balPage.createAccountButton();
-});
-
-Then('I can see Select Account button', async function () {
-    await global.page.waitForTimeout(10000);
-    const balPage = new BalPage();
-    await balPage.selectAccountButton();
 });
 
 Then('I clicked on Wallets link on Polkadex page',async function () {
@@ -132,7 +127,7 @@ Then('I can see What is Withdrawal? popup', async function () {
     await balPage.withdrawalPopup();
 });
 
-Then('I can see What is transfer? popup', async function () {
+Then('I can see What is Transfer? popup', async function () {
     const balPage = new BalPage();
     await balPage.transferPopup();
 });
@@ -177,6 +172,11 @@ Then('I see text as "Available balance in your funding and trading account. on b
     await balPage.textBalancePage();
 });
 
+Then('I see text as "Overview" on Balances Page', async function () {
+    const balPage = new BalPage();
+    await balPage.overviewTextBalancePage();
+});
+
 
 When('I searched text {string} in search bar of overview Section', async function (string) {
     const balPage = new BalPage();
@@ -218,6 +218,11 @@ Then('I am able to select Hide small balances checkbox', async function () {
     await balPage.clickCheckbox(); 
 });
 
+Then('I am able to view Hide_small_balance text with checkbox on Balances Page', async function () {
+    const balPage = new BalPage();
+    await balPage.readTextCheckbox(); 
+});
+
 Then('I can get the list of cloumn header names under Overview Section', async function () {
     const balPage = new BalPage();
     await balPage.getHeaderList(); 
@@ -232,3 +237,102 @@ Then('I click on {string} button on Deposit popup} popup', async function () {
 const balPage = new BalPage();
 await balPage.popup();
 });
+
+Then('I am able to select Dont show again checkbox on What is Deposit? popup', async function () {
+    const balPage = new BalPage();
+    await balPage.clickDepositCheckbox(); 
+});
+
+Then('I click on back button on What is Withdrawal? popup', async function () {
+    const balPage = new BalPage();
+    await balPage.withdrawalBackButton(); 
+});
+
+Then('I can see Next Button on What is Withdrawal? popup', async function () {
+    const balPage = new BalPage();
+    await balPage.readWithdrawalPopupNextButton();
+});
+
+Then('I can see Back Button on What is Withdrawal? popup', async function () {
+    const balPage = new BalPage();
+    await balPage.readWithdrawalPopupBackButton();
+});
+
+Then("I can see checkbox with text as Don't show again on What is Withdrawal? popup", async function () {
+    const balPage = new BalPage();
+    await balPage.readWithdrawalPopupCheckbox();
+});
+
+When('I refresh the page',async function() {
+    const balPage = new BalPage();
+    await balPage.reloadPage();
+});
+
+Then('I can see Balances page without popup', async function () {
+    const balPage = new BalPage();
+    await balPage.balancesHeadingText();
+});
+
+Then('I can see Done Button on What is Transfer? popup', async function () {
+    const balPage = new BalPage();
+    await balPage.readTransferPopupDoneButton();
+});
+
+Then('I can see Back Button on What is Transfer? popup', async function () {
+    const balPage = new BalPage();
+    await balPage.readTransferPopupBackButton();
+});
+
+Then("I can see checkbox with text as Don't show again on What is Transfer? popup", async function () {
+    const balPage = new BalPage();
+    await balPage.readTransferPopupCheckbox();
+});
+
+Then('I am able to select Dont show again checkbox on What is WithDrawal? popup', async function () {
+    const balPage = new BalPage();
+    await balPage.clickWithDrawalCheckbox(); 
+});
+
+Then('I can see Next Button on What is Deposit? popup', async function () {
+    const balPage = new BalPage();
+    await balPage.readDepositPopupNextButton();
+});
+
+Then('I can see Back Button on What is Deposit? popup', async function () {
+    const balPage = new BalPage();
+    await balPage.readWithdrawalPopupBackButton();
+});
+
+Then("I can see checkbox with text as Don't show again on What is Deposit? popup", async function () {
+    const balPage = new BalPage();
+    await balPage.readDepositPopupCheckbox();
+});
+
+Then('I am able to select Dont show again checkbox on What is Transfer? popup', async function () {
+    const balPage = new BalPage();
+    await balPage.clickTransferCheckbox(); 
+});
+
+Then('I am able to view Search bar on Balances Page', async function () {
+    const balPage = new BalPage();
+    await balPage.viewSearchButton();
+    });
+
+Then('I am able to view {string} Header Text on balances Page', async function (readHeaderText: string) {
+    const balPage = new BalPage();
+    await balPage.readBHeaderText();
+    return readHeaderText;
+    });
+
+Then('I am able view sort button for {string} header', async function (readABSortButton: any) {
+    const balPage = new BalPage();
+    await balPage.readBSortButton();
+    return readABSortButton;
+    });
+
+Then('I can get the list of tokens under {string} Header', async function (tokenHeaderList: string) {
+    const balPage = new BalPage();
+    await balPage.getTokenHeaderList();
+    return tokenHeaderList;
+    });
+    
