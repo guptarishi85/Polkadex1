@@ -94,7 +94,7 @@ public clickJsonRadioButton = async () => {
 }
 
 public uploadFileButton = async () => {
-await global.page.setInputFiles('(//div[@role = "presentation"]/input)', ['D:/PolkadexAutomation/Polkadex1/UploadItems/AccountImport.json']);
+await global.page.setInputFiles('(//div[@role = "presentation"]/input)', ['F:/PolkadexAutomation_nov/Polkadex1/UploadItems/AccountImport.json']);
 await global.page.waitForTimeout(5000);
 }
 

@@ -12,10 +12,10 @@ BeforeAll(async () => {
     console.log('before all ...');
     global.browser = await playwright['chromium'].launch(options);
 });
-AfterAll(async () => {
+/*AfterAll(async () => {
     console.log('after all ...');
     await global.browser.close();
-});
+});*/
 Before(async () => {
     console.log('before ...');
     global.context = await global.browser.newContext();
