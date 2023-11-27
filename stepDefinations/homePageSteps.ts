@@ -39,7 +39,7 @@ Then('I see in title {string}', async function(title: string) {
 
     
 When('I click on Start Trading button', async function(){
-  await global.page.waitForTimeout(10000);
+  await global.page.waitForTimeout(40000);
   const homePage = new HomePage();
   await homePage.clickStButton();
   });

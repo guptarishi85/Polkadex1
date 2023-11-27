@@ -20,7 +20,6 @@ class HomePage {
         await global.page.goto(global.BASE_URL);
         setDefaultTimeout(parseInt(process.env.DEFAULT_TIMEOUT) || 60000);
     };
-    
     verifyButtonsAreVisible = async () => {
         await (0, test_1.expect)(global.logo).toBeVisible();
         await (0, test_1.expect)(global.searchButton).toBeVisible();

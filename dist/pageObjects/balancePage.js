@@ -81,7 +81,7 @@ class BalPage {
         (0, test_1.expect)(await global.uploadButton).toBeVisible();
     };
     uploadFileButton = async () => {
-        await global.page.setInputFiles('(//div[@role = "presentation"]/input)', ['D:/PolkadexAutomation/Polkadex1/UploadItems/AccountImport.json']);
+        await global.page.setInputFiles('(//div[@role = "presentation"]/input)', ['F:/PolkadexAutomation_nov/Polkadex1/UploadItems/AccountImport.json']);
         await global.page.waitForTimeout(5000);
     };
     importAccountButtonEnabled = async () => {

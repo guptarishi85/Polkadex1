@@ -34,7 +34,7 @@ Then('I populate the list of content', async function () {
     await homePage.getCount();
 });
 When('I click on Start Trading button', async function () {
-    await global.page.waitForTimeout(10000);
+    await global.page.waitForTimeout(40000);
     const homePage = new homePage_1.HomePage();
     await homePage.clickStButton();
 });
