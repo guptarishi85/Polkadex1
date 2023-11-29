@@ -10,7 +10,7 @@ Background:
  And I can see DOT/USTD Text on screen
 
 
-Scenario: Verify deposit button functionalities
+Scenario: Verify Import Button functionality and Balance Page functionalities
 And I click on login link
 And I enter the email as "hjose@4labsinc.com"
 And I enter the password as "Leena@2010"
@@ -41,7 +41,20 @@ Then I can see What is Withdrawal? popup
 Then I click on Next button on What is Withdrawal? popup
 Then I can see What is Transfer? popup
 Then I click on Done button on What is transfer? popup  
-Then I am able to view "Actions" Header Text on balances Page
+Then I see text as "Available balance in your funding and trading account. on balance page"
+Then I can get the list of cloumn header names under Overview Section 
+Then I click on the Name Cloumn header
+Then I click on the Funding Account Cloumn header
+Then I click on the Trading Account Cloumn header
+Then I click on the In Orders Cloumn header
+Then I click Hide small balances checkbox
+When I searched text "DOT" in search bar of overview Section
+Then searched item should display under overview Section
+Then I can see "Contact us" Button on Balances Page
+And I can see Text as "Having Trouble?" on footer part
+And I can see Text as "Feel free to get in touch." on footer part
+Then I can see the "Open tour" Button on Balances Page
+And I can see Text as "Deposit, Withdrawal, and Transfer differences" on footer part
+And I can see Text as "We'll guide you through these new processes on a quick tour." on footer part
 Then I can see "Deposit" Button on Balances Page
-When I click on Deposit button on Balances Page
-Then page is navigated to "https://thea.polkadex.trade/" page
+Then I can see "Transfer" Button on Balances Page

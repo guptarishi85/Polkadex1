@@ -1,8 +1,8 @@
-Feature: Balances Page
+Feature: Balances Page_ Balanace_Open tour verification
 
  As a user 
  I want to test
- Polkadex Balances Page
+ Balanace_Open tour
 
 Background:
  Given I am on the home screen
@@ -10,7 +10,7 @@ Background:
  And I can see DOT/USTD Text on screen
 
 
-Scenario: Verify Import Button functionality and Balance Page functionalities
+Scenario: Verify Balanace_Open tour
 And I click on login link
 And I enter the email as "hjose@4labsinc.com"
 And I enter the password as "Leena@2010"
@@ -35,18 +35,13 @@ And I click on the Import Button under add trading account window
 Then Trading Account imported successfully
 Then I click on back button under add trading account window
 When I click on Balances link on Polkadex page
-Then I can see What is Deposit? popup
-Then I click on Next button on What is Deposit? popup
-Then I can see What is Withdrawal? popup
-Then I click on Next button on What is Withdrawal? popup
-Then I can see What is Transfer? popup
-Then I click on Done button on What is transfer? popup  
+And I can see What is Deposit? popup
+And I click on Next button on What is Deposit? popup
+And I can see What is Withdrawal? popup
+And I click on Next button on What is Withdrawal? popup
+And I can see What is Transfer? popup
+And I click on Done button on What is transfer? popup 
 Then I see text as "Available balance in your funding and trading account. on balance page"
-Then I can get the list of cloumn header names under Overview Section 
-Then I click on the Name Cloumn header
-Then I click on the Funding Account Cloumn header
-Then I click on the Trading Account Cloumn header
-Then I click on the In Orders Cloumn header
-Then I am able to select Hide small balances checkbox
-When I searched text "DOT" in search bar of overview Section
-Then searched item should display under overview Section
+Then I can see the "Open tour" Button on Balances Page
+And I can see Text as "Deposit, Withdrawal, and Transfer differences" on footer part
+And I can see Text as "We'll guide you through these new processes on a quick tour." on footer part

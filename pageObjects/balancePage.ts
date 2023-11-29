@@ -19,6 +19,9 @@ global.importAccountButtonEnabled = global.page.locator("//button[@type = 'submi
 global.importMessageSuccess = global.page.locator("//h3[contains(text(),'Trading Account Imported')]");
 global.textBalancePage =  global.page.locator("//h2[contains(text(),'Available balance in your funding and trading account.')]");
 global.overviewTextBalancePage = global.page.locator("div.sc-1e226c60-7.fmWlTv h2");
+global.transferheadingText = global.page.locator("div.div.sc-c8178fd-6.fDtRhI h1");
+global.transferheadingText1 = global.page.locator("div.div.sc-c8178fd-6.fDtRhI h2");
+global.connectTradingAccountText = global.page.locator("div.sc-7a1a3c5c-3.iRedQN h2");
 global.textAftersearch = global.page.locator("//span[contains(text(),'DOT')]");
 global.checkBox = global.page.locator("//input[@type='checkbox']"); 
 global.nameHeader = global.page.locator("//span[contains(text(),'Name')]"); 
@@ -36,6 +39,12 @@ global.withdrawalBackButton = global.page.locator("//button[contains(text(),'Bac
 global.readWithdrawalPopupNextButton = global.page.locator("//div[@class='sc-85c6fc8c-2 dUCjbf']/button[2]");
 global.viewSearchButton = global.page.locator("//input[@placeholder='Search']");
 global.hideSmallBalances = global.page.locator("//div[@class = 'sc-dccd9f95-0 gVJEHz']/label");
+global.noSearchedResultFound = global.page.locator("div.sc-339e69cb-1.dBJvZE p");
+global.openTourButton = global.page.locator("//button[@type='button']");
+global.hoverDepositButton = global.page.locator("//div[contains(text(),'Extenal link')]");
+global.withdrawButton = global.page.locator("a.withdrawButton");
+global.transferButton = global.page.locator("a.transferButton");
+global.contactUsButton = global.page.locator("//a[normalize-space()='Contact us']");
 }
 
 public clickLoginLink = async () => {
@@ -167,7 +176,17 @@ public clickDepositNextButtonPopup = async () => {
   expect(await global.page.locator("//div[@class='sc-85c6fc8c-2 dUCjbf']/button[2]").click());
   await await global.page.waitForTimeout(5000);
  }
- 
+
+ public viewOpenTourButton = async () => {
+  await global.openTourButton.click();
+  await await global.page.waitForTimeout(5000);
+ }
+
+ public transferPopupClosed = async () => {
+  expect(await global.page.locator("//div[@class='sc-85c6fc8c-2 dUCjbf']/button[2]")).toBeTruthy();
+  await await global.page.waitForTimeout(5000);
+ }
+
 public clickBackButton = async () => {
   await global.page.locator("//button[@class = 'sc-a9ae2f11-1 iQMGmU' ]//*[local-name()='svg']").click();
 }
@@ -182,6 +201,23 @@ public overviewTextBalancePage = async () => {
   await await global.page.waitForTimeout(5000);
   }
 
+public transferheadingText = async () => {
+  expect(await global.transferheadingText).toHaveText ('Transfer');
+  await await global.page.waitForTimeout(5000);
+  }
+
+  public transferheadingText1 = async () => {
+    expect(await global.transferheadingText1).toHaveText ('Transfer');
+    await await global.page.waitForTimeout(5000);
+    }
+  
+  
+
+public connectTradingAccountText = async () => {
+  expect(await global.connectTradingAccountText).toHaveText ('Connect your Trading Account');
+  await await global.page.waitForTimeout(5000);
+  }
+
 public searchText = async () => {
 await global.page.type("[placeholder='Search']","DOT");
 await await global.page.waitForTimeout(5000);
@@ -192,7 +228,22 @@ public textAftersearch = async () => {
   await await global.page.waitForTimeout(5000);
   }
 
+  public searchInvalidText = async () => {
+    await global.page.type("[placeholder='Search']","$$");
+    await await global.page.waitForTimeout(5000);
+    }
+
+public noSearchedResultFound = async () => {
+expect(await global.noSearchedResultFound).toHaveText ('No result found');
+await await global.page.waitForTimeout(5000);
+}    
+
 public clickCheckbox = async () => {
+  await global.checkBox.click();
+  await await global.page.waitForTimeout(10000);
+}
+
+public undoCheckboxclick = async () => {
   await global.checkBox.click();
   await await global.page.waitForTimeout(10000);
 }
@@ -202,7 +253,7 @@ public readTextCheckbox = async () => {
   await await global.page.waitForTimeout(10000);
 }
 
-  public nextButtonClick = async() => {
+public nextButtonClick = async() => {
     await global.nextButton.click;
 }
 
@@ -214,47 +265,47 @@ public getHeaderList = async () => {
 
 public clickNamesColoumnHeaders = async () => {
   await global.nameHeader.click();
-  await await global.page.waitForTimeout(10000);
+  await global.page.waitForTimeout(10000);
 }
 
 public clickFAColoumnHeaders = async () => {
   await global.fundAcHeader.click();
-  await await global.page.waitForTimeout(10000);
+  await global.page.waitForTimeout(10000);
 }
 
 public clickTAColoumnHeaders = async () => {
   await global.tradingAcHeader.click();
-  await await global.page.waitForTimeout(10000);
+  await global.page.waitForTimeout(10000);
 }
 
 public clickOrdersColoumnHeaders = async () => {
   await global.inOrders.click();
-  await await global.page.waitForTimeout(10000);
+  await global.page.waitForTimeout(10000);
 }
 
 public clickActionsColoumnHeaders = async () => {
   await global.actions.click();
-  await await global.page.waitForTimeout(10000);
+  await global.page.waitForTimeout(10000);
 }
 
 public clickCrosspopupButton = async () => {
 await global.page.locator("//button[@class='sc-817aa84f-1 loAZxI']//*[local-name()='svg']//*[local-name()='path'][1]").click();
-await await global.page.waitForTimeout(2000);
+await global.page.waitForTimeout(2000);
 }
 
 public clickDepositCheckbox = async () => {
   await global.depositCheckbox.click();
-  await await global.page.waitForTimeout(10000);
+  await global.page.waitForTimeout(10000);
 }
 
 public clickWithDrawalCheckbox = async () => {
   await global.depositCheckbox.click();
-  await await global.page.waitForTimeout(10000);
+  await global.page.waitForTimeout(10000);
 }
 
 public clickTransferCheckbox = async () => {
   await global.depositCheckbox.click();
-  await await global.page.waitForTimeout(10000);
+  await global.page.waitForTimeout(10000);
 }
 
 public withdrawalBackButton = async () => {
@@ -284,6 +335,28 @@ public readDepositPopupCheckbox = async () => {
 public readDepositPopupNextButton = async () => {
   expect(await global.page.locator("div.sc-85c6fc8c-2.dUCjbf button")).toBeVisible();
 }
+
+public viewBalancePageButton = async () => {
+const buttons = global.page.locator('a:visible');
+const buttonsCount = await buttons.count();
+const hrefs = [];
+for (let i = 0; i < buttonsCount; i++) {
+  hrefs.push(await buttons.nth(i).getAttribute('href'));
+}
+console.log(hrefs);
+await await global.page.waitForTimeout(10000);
+}
+
+public textFooter = async () => {
+  const buttons = global.page.locator('div.sc-1e226c60-20.kjRPsS h4:visible');
+  const buttonsCount = await buttons.count();
+  const hrefs = [];
+  for (let i = 0; i < buttonsCount; i++) {
+    hrefs.push(await buttons.nth(i).getAttribute('h4'));
+  }
+  console.log(hrefs);
+  await await global.page.waitForTimeout(10000);
+  }
 
 public reloadPage = async () => {
     await global.page.goto('https://orderbook.polkadex.trade/balances');
@@ -327,12 +400,100 @@ public readBSortButton = async () => {
   }
 
   public getTokenHeaderList = async () => {
-    const nameHeaderList = expect(await global.page.locator("//div[@class='sc-1b50adbf-3 bqyuGU']/div/span")).toHaveText(['ASTR', 'DOT', 'IBTC', 'PDEX', 'USDT']);
-    //allTextContents();
-    //toHaveText(['ASTR','DOT','IBTC','USDT','PDEX']);
+    const nameHeaderList = await global.page.locator("//div[@class='sc-1b50adbf-3 bqyuGU']/div/span").toHaveText(['ASTR', 'DOT', 'IBTC', 'PDEX', 'USDT']);
     console.log(nameHeaderList);
-    // await await global.page.waitForTimeout(10000);
- 
+   }
+
+public getFundingTokenHeaderList = async () => {
+  const nameFAHeaderList = await global.page.locator("//div[@class='sc-1b50adbf-7 dWPFre']/span").allTextContents();
+  console.log(nameFAHeaderList);
+  }
+
+public getTradingTokenHeaderList = async () => {
+  const nameTAHeaderList = await global.page.locator("//div[@class='sc-1b50adbf-7 dWPFre']/span").allTextContents();
+  console.log(nameTAHeaderList);
+  }
+
+public getInOrdersTokenHeaderList = async () => {
+  const nameInOrdersHeaderList = await global.page.locator("//div[@class='sc-1b50adbf-7 dWPFre']/span").allTextContents();
+  console.log(nameInOrdersHeaderList);
+  }
+
+public viewButtonsOnBalance = async () => {
+await global.page.locator("//button[@class='sc-817aa84f-1 loAZxI']//*[local-name()='svg']//*[local-name()='path'][1]").click();
+await global.page.waitForTimeout(2000);
 }
+
+public returnHighBalanceAccountList = async () => {
+const nameHeaderList = await global.page.locator("//div[@class='sc-1b50adbf-3 bqyuGU']/div/span").allTextContents();
+console.log(nameHeaderList);
+ }
+
+public returnAllBalanceAccountList = async () => {
+const nameHeaderList = await global.page.locator("//div[@class='sc-1b50adbf-3 bqyuGU']/div/span").allTextContents();
+console.log(nameHeaderList);
+ }
+
+public descendingOrderToken = async () => {
+const nameHeaderList = await global.page.locator("//div[@class='sc-1b50adbf-3 bqyuGU']/div/span").allTextContents();
+console.log(nameHeaderList);
+ }
+
+public clickDepositButton = async () => {
+  expect(await global.page.locator("//a[@href='https://thea.polkadex.trade/']").click());
+ }
+
+ public hoverDepositButton = async () => {
+  await global.page.locator("//a[@href='https://thea.polkadex.trade/']").hover();
+  await global.page.waitForTimeout(10000);
+}
+
+public hoverWithdrawButton = async () => {
+  await global.withdrawButton.hover();
+  await global.page.waitForTimeout(10000);
+}
+ 
+public hoverExternalLinkDepositButton = async () => {
+  expect(await global.hoverDepositButton).toBeVisible();
+  await global.page.waitForTimeout(5000);
+}
+
+public hoverExternalLinkWithdrawButton = async () => {
+  expect(await global.hoverDepositButton).toBeVisible();
+  await global.page.waitForTimeout(5000);
+}
+
+
+
+ public navigateToTradePage = async () => {
+  await global.page.goto('https://thea.polkadex.trade/');
+    setDefaultTimeout(parseInt(process.env.DEFAULT_TIMEOUT) || 60000);
+    await await global.page.waitForTimeout(6000);
+}
+
+public clickWithdrawButton = async () => {
+await global.withdrawButton.click()
+ }
+
+ public clickTransferButton = async () => {
+  await global.transferButton.click()
+   }
+
+ public clickContactusButton = async () => {
+  await global.contactUsButton.click()
+   }
+
+ public navigateToWithdrawPage = async () => {
+  await global.page.goto('https://thea.polkadex.trade/withdraw');
+    setDefaultTimeout(parseInt(process.env.DEFAULT_TIMEOUT) || 60000);
+    await await global.page.waitForTimeout(6000);
+}
+
+public navigateToTransferPage = async () => {
+  await global.page.goto('https://orderbook.polkadex.trade/transfer?token=USDT');
+    setDefaultTimeout(parseInt(process.env.DEFAULT_TIMEOUT) || 60000);
+    await await global.page.waitForTimeout(6000);
+}
+ 
 }
 module.exports = { BalPage };

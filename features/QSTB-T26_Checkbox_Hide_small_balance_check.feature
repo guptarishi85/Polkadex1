@@ -1,15 +1,15 @@
-Feature: BalancePage_Pop-up_Transfer_Back button verification
+Feature: BalancePage_Checkbox_Hide small balance_check verification
 
 As a user 
 I want to test
-Pop-up_Deposit_Next buttonPage on Balances page
+Checkbox_Hide small balance_check on Balances page
 
 Background:
  Given I am on the home screen
  And I click on Start Trading button
  And I can see DOT/USTD Text on screen
 
-Scenario: Pop-up_Transfer_Back button Balances Screen
+Scenario: Verify Checkbox_Hide small balance_check
 And I click on login link
 And I enter the email as "hjose@4labsinc.com"
 And I enter the password as "Leena@2010"
@@ -35,8 +35,11 @@ Then Trading Account imported successfully
 Then I click on back button under add trading account window
 When I click on Balances link on Polkadex page
 And I can see What is Deposit? popup
-Then I am able to select Dont show again checkbox on What is Deposit? popup
-Then I click on Next button on What is Deposit? popup
-Then I can see What is Withdrawal? popup
-When I click on back button on What is Withdrawal? popup
-Then I can see What is Deposit? popup
+And I click on Next button on What is Deposit? popup
+And I can see What is Withdrawal? popup
+And I click on Next button on What is Withdrawal? popup
+And I can see What is Transfer? popup   
+And I click on Done button on What is transfer? popup 
+Then I see text as "Available balance in your funding and trading account. on balance page"
+When I click Hide small balances checkbox
+Then I can see all accounts with high balance only
