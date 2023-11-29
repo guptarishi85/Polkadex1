@@ -27,7 +27,7 @@ let Page;
 (0, cucumber_1.Then)('Login should be success', async function () {
     const sell = global.page.locator('div.sc-714be224-4.dBqqUP');
     await (0, test_1.expect)(sell).toBeVisible();
-    await global.page.waitForTimeout(10000);
+    await global.page.waitForTimeout(20000);
 });
 (0, cucumber_1.Then)('I click cross button on popup', async function () {
     const balPage = new balancePage_1.BalPage();
