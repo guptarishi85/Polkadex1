@@ -1,15 +1,16 @@
-Feature: BalancePage_Balance_First row verification
+Feature: Balances Page_ Balance_Contact us
 
-As a user 
-I want to test
-Balance_First row on Balances page
+ As a user 
+ I want to test
+ Balance_Contact us
 
 Background:
-Given I am on the home screen
-And I click on Start Trading button
-And I can see DOT/USTD Text on screen
+ Given I am on the home screen
+ And I click on Start Trading button
+ And I can see DOT/USTD Text on screen
 
-Scenario: Verify First row on Balance page
+
+Scenario: Verify Balance_Contact us
 And I click on login link
 And I enter the email as "hjose@4labsinc.com"
 And I enter the password as "Leena@2010"
@@ -34,12 +35,13 @@ And I click on the Import Button under add trading account window
 Then Trading Account imported successfully
 Then I click on back button under add trading account window
 When I click on Balances link on Polkadex page
-Then I can see What is Deposit? popup
-Then I click on Next button on What is Deposit? popup
-Then I can see What is Withdrawal? popup
-Then I click on Next button on What is Withdrawal? popup
-Then I can see What is Transfer? popup
-Then I click on Done button on What is transfer? popup  
-Then I see text as "Overview" on Balances Page
-Then I am able to view Search bar on Balances Page
-And I am able to view Hide_small_balance text with checkbox on Balances Page
+And I can see What is Deposit? popup
+And I click on Next button on What is Deposit? popup
+And I can see What is Withdrawal? popup
+And I click on Next button on What is Withdrawal? popup
+And I can see What is Transfer? popup
+And I click on Done button on What is transfer? popup 
+Then I see text as "Available balance in your funding and trading account. on balance page"
+Then I can see "Contact us" Button on Balances Page
+And I can see Text as "Having Trouble?" on footer part
+And I can see Text as "Feel free to get in touch." on footer part

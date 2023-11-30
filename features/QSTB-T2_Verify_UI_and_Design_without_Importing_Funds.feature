@@ -19,10 +19,9 @@ Then Login should be success
 And I click cross button on popup
 When I click on Balances link on Polkadex page
 Then I see text as "Available balance in your funding and trading account. on balance page"
-Then I see text as "Overview" on Balances Page
-Then I am able to view Search bar on Balances Page
-When I searched text "$$" in search bar of overview Section
-Then searched item should display No result found under overview Section
+And I see text as "Overview" on Balances Page
+And I am able to view Search bar on Balances Page
+And I searched "$$" in search bar of overview Section
 And I am able to view Hide_small_balance text with checkbox on Balances Page
 And I click Hide small balances checkbox
 And I uncheck Hide small balances checkbox

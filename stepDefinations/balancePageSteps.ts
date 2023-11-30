@@ -32,7 +32,7 @@ When('I click on the login button', async function () {
   Then('Login should be success', async function () {
     const sell = global.page.locator('div.sc-714be224-4.dBqqUP');
     await expect(sell).toBeVisible();
-    await global.page.waitForTimeout(10000);
+    await global.page.waitForTimeout(20000);
 });
 
 Then('I click cross button on popup', async function() {
@@ -112,6 +112,10 @@ Then('I click on back button under add trading account window', async function (
     await balPage.clickBackButton();
 });
 
+Then('I can see the "Open tour" Button on Balances Page', async function () {
+    const balPage = new BalPage();
+    await balPage.viewOpenTourButton();
+});
 When('I click on Balances link on Polkadex page',async function () {
     const balPage = new BalPage();
     await balPage.clickBalanceLink();    
@@ -167,9 +171,20 @@ Then('I click on Done button on What is transfer? popup',async function () {
     await balPage.clickTransferDoneButtonPopup();    
 });
 
+Then('Transfer popup window is closed',async function () {
+    const balPage = new BalPage();
+    await balPage.transferPopupClosed();    
+});
+
 Then('I see text as "Available balance in your funding and trading account. on balance page"', async function () {
     const balPage = new BalPage();
     await balPage.textBalancePage();
+});
+
+Then('I can see Text as {string} on footer part', async function (textFooter: string) {
+    const balPage = new BalPage();
+    await balPage.textFooter();
+    return textFooter;
 });
 
 Then('I see text as "Overview" on Balances Page', async function () {
@@ -177,11 +192,37 @@ Then('I see text as "Overview" on Balances Page', async function () {
     await balPage.overviewTextBalancePage();
 });
 
+Then('I see text as "Transfer" on Transfer Page', async function () {
+    const balPage = new BalPage();
+    await balPage.transferheadingText();
+});
 
-When('I searched text {string} in search bar of overview Section', async function (string) {
+Then('I see text as "Move tokens between your Funding account and Trading account" on Transfer Page', async function () {
+    const balPage = new BalPage();
+    await balPage.transferheadingText1();
+});
+
+Then('I see text as "Connect your Trading Account" on Balances page', async function () {
+    const balPage = new BalPage();
+    await balPage.connectTradingAccountText();
+});
+
+When('I searched text "DOT" in search bar of overview Section', async function () {
     const balPage = new BalPage();
     await balPage.searchText(); 
 });
+
+When('I searched "$$" in search bar of overview Section', async function () {
+    const balPage = new BalPage();
+    await balPage.searchInvalidText(); 
+});
+
+Then('searched item should display No result found under overview Section',async function(){
+    const balPage = new BalPage();
+    await balPage.noSearchedResultFound(); 
+});
+
+
 
 Then('searched item should display under overview Section', async function () {
     const balPage = new BalPage();
@@ -213,9 +254,14 @@ Then('I click on the Actions Cloumn header', async function () {
     await balPage.clickActionsColoumnHeaders(); 
 });
 
-Then('I am able to select Hide small balances checkbox', async function () {
+Then('I click Hide small balances checkbox', async function () {
     const balPage = new BalPage();
     await balPage.clickCheckbox(); 
+});
+
+Then('I uncheck Hide small balances checkbox', async function () {
+    const balPage = new BalPage();
+    await balPage.undoCheckboxclick(); 
 });
 
 Then('I am able to view Hide_small_balance text with checkbox on Balances Page', async function () {
@@ -237,6 +283,12 @@ Then('I click on {string} button on Deposit popup} popup', async function () {
 const balPage = new BalPage();
 await balPage.popup();
 });
+
+Then('I can see {string} Button on Balances Page', async function (button:any) {
+    const balPage = new BalPage();
+    await balPage.viewBalancePageButton();
+    return button;
+    });
 
 Then('I am able to select Dont show again checkbox on What is Deposit? popup', async function () {
     const balPage = new BalPage();
@@ -335,4 +387,113 @@ Then('I can get the list of tokens under {string} Header', async function (token
     await balPage.getTokenHeaderList();
     return tokenHeaderList;
     });
+
+Then('I can get the list of tokens under Funding Account Header', async function () {
+    const balPage = new BalPage();
+    await balPage.getFundingTokenHeaderList();
+    //return tokenFAHeaderList;
+    });
+
+Then('I can get the list of tokens under Trading Account Header', async function () {
+    const balPage = new BalPage();
+    await balPage.getTradingTokenHeaderList();
+    });
+
+Then('I can get the list of tokens under In Orders Header', async function () {
+    const balPage = new BalPage();
+    await balPage.getInOrdersTokenHeaderList();
+    });
+
+Then('I can see all accounts with high balance only', async function () {
+    const balPage = new BalPage();
+    await balPage.returnHighBalanceAccountList();
+    });
     
+Then('I can see all the tokens after unchecking checkbox', async function () {
+    const balPage = new BalPage();
+    await balPage.returnAllBalanceAccountList();
+    });
+
+Then('I can see tokens in descending order', async function () {
+    const balPage = new BalPage();
+    await balPage.descendingOrderToken();
+    });
+
+Then('I click on Deposit button on Balances Page', async function() {
+    const balPage = new BalPage();
+    await balPage.clickDepositButton();   
+    await global.page.waitForTimeout(10000); 
+});
+
+Then('page should redirect to {string} page', async function(depositPage:string) {
+    const balPage = new BalPage();
+    await balPage.navigateToTradePage();   
+    await global.page.waitForTimeout(10000);
+    return depositPage
+});
+
+Then('I hover on Deposit Button', async function() {
+    const balPage = new BalPage();
+    await balPage.hoverDepositButton();   
+    await global.page.waitForTimeout(5000); 
+});
+
+Then('I hover on Withdraw Button', async function() {
+    const balPage = new BalPage();
+    await balPage.hoverWithdrawButton();   
+    await global.page.waitForTimeout(5000); 
+});
+
+Then('External link on Deposit button is displayed', async function() {
+    const balPage = new BalPage();
+    await balPage.hoverExternalLinkDepositButton();   
+    await global.page.waitForTimeout(5000); 
+});
+
+Then('External link on Withdraw button is displayed', async function() {
+    const balPage = new BalPage();
+    await balPage.hoverExternalLinkWithdrawButton();   
+    await global.page.waitForTimeout(5000); 
+});
+
+Then('I click on Withdraw button on Balances Page', async function() {
+    const balPage = new BalPage();
+    await balPage.clickWithdrawButton();    
+});
+
+Then('I click on Transfer button on Balances Page', async function() {
+    const balPage = new BalPage();
+    await balPage.clickTransferButton();    
+});
+
+Then('I click on Contactus button on Balances Page', async function() {
+    const balPage = new BalPage();
+    await balPage.clickContactusButton();    
+});
+
+Then('balance page is navigated to {string} page', async function(WithDrawPage:string) {
+    const balPage = new BalPage();
+    await balPage.navigateToWithdrawPage();    
+    return WithDrawPage;
+});
+
+Then('balance page for Transfer button is navigated to {string} page', async function(transferPage:string) {
+    const balPage = new BalPage();
+    await balPage.navigateToTransferPage();    
+    return transferPage;
+});
+
+Then('Contact-us button is navigated to {string} page', async function(transferPage:string) {
+    const balPage = new BalPage();
+    await balPage.navigateToTransferPage();    
+    return transferPage;
+});
+
+
+
+
+
+
+    
+
+

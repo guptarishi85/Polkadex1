@@ -1,15 +1,15 @@
-Feature: BalancePage_Search bar_invalid_data verification
+Feature: BalancePage_Checkbox_Hide small balance_check verification
 
 As a user 
 I want to test
-Search bar_invalid_data on Balances page
+Checkbox_Hide small balance_check on Balances page
 
 Background:
  Given I am on the home screen
  And I click on Start Trading button
  And I can see DOT/USTD Text on screen
 
-Scenario: Verify Search bar_invalid_data
+Scenario: Verify Checkbox_Hide small balance_check
 And I click on login link
 And I enter the email as "hjose@4labsinc.com"
 And I enter the password as "Leena@2010"
@@ -38,8 +38,8 @@ And I can see What is Deposit? popup
 And I click on Next button on What is Deposit? popup
 And I can see What is Withdrawal? popup
 And I click on Next button on What is Withdrawal? popup
-And I can see What is Transfer? popup
+And I can see What is Transfer? popup   
 And I click on Done button on What is transfer? popup 
-Then I see text as "Available balance in your funding and trading account. on balance page"
-When I searched text "$$" in search bar of overview Section
-Then searched item should display No result found under overview Section
+#Then I see text as "Available balance in your funding and trading account. on balance page"
+When I click on the Name Cloumn header
+Then I can see tokens in descending order

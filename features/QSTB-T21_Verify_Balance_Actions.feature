@@ -1,8 +1,8 @@
-Feature: Balances Page
+Feature: Balances Page_ Balance_Actions
 
  As a user 
  I want to test
- Polkadex Balances Page Withdraw_button_Click
+ Balance_Actions buttons
 
 Background:
  Given I am on the home screen
@@ -10,7 +10,7 @@ Background:
  And I can see DOT/USTD Text on screen
 
 
-Scenario: Verify Withdraw_button_Click functionalities
+Scenario: Verify Balance_Actions
 And I click on login link
 And I enter the email as "hjose@4labsinc.com"
 And I enter the password as "Leena@2010"
@@ -35,13 +35,13 @@ And I click on the Import Button under add trading account window
 Then Trading Account imported successfully
 Then I click on back button under add trading account window
 When I click on Balances link on Polkadex page
-Then I can see What is Deposit? popup
-Then I click on Next button on What is Deposit? popup
-Then I can see What is Withdrawal? popup
-Then I click on Next button on What is Withdrawal? popup
-Then I can see What is Transfer? popup
-Then I click on Done button on What is transfer? popup  
+And I can see What is Deposit? popup
+And I click on Next button on What is Deposit? popup
+And I can see What is Withdrawal? popup
+And I click on Next button on What is Withdrawal? popup
+And I can see What is Transfer? popup
+And I click on Done button on What is transfer? popup 
 Then I am able to view "Actions" Header Text on balances Page
+Then I can see "Deposit" Button on Balances Page
 Then I can see "Withdraw" Button on Balances Page
-When I click on Withdraw button on Balances Page
-Then balance page is navigated to 'https://thea.polkadex.trade/withdraw' page
+Then I can see "Transfer" Button on Balances Page
