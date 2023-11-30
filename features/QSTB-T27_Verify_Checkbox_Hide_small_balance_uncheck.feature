@@ -1,15 +1,15 @@
-Feature: BalancePage_Pop-up_Transfer_checkbox verification
+Feature: BalancePage_Checkbox_Hide small balance_check verification
 
 As a user 
 I want to test
-Pop-up_Transfer_checkbox on Balances page
+Checkbox_Hide small balance_check on Balances page
 
 Background:
  Given I am on the home screen
  And I click on Start Trading button
  And I can see DOT/USTD Text on screen
 
-Scenario: User able to verify the Pop-up_Transfer_checkbox on Balances Screen
+Scenario: Verify Checkbox_Hide small balance_check
 And I click on login link
 And I enter the email as "hjose@4labsinc.com"
 And I enter the password as "Leena@2010"
@@ -34,11 +34,14 @@ And I click on the Import Button under add trading account window
 Then Trading Account imported successfully
 Then I click on back button under add trading account window
 When I click on Balances link on Polkadex page
-Then I can see What is Deposit? popup
-Then I click on Next button on What is Deposit? popup
-Then I can see What is Withdrawal? popup
-Then I click on Next button on What is Withdrawal? popup
-Then I can see What is Transfer? popup
-And I am able to select Dont show again checkbox on What is Transfer? popup
-When I refresh the page
-Then I can see Balances page without popup
+And I can see What is Deposit? popup
+And I click on Next button on What is Deposit? popup
+And I can see What is Withdrawal? popup
+And I click on Next button on What is Withdrawal? popup
+And I can see What is Transfer? popup   
+And I click on Done button on What is transfer? popup 
+Then I see text as "Available balance in your funding and trading account. on balance page"
+When I click Hide small balances checkbox
+Then I can see all accounts with high balance only
+When I uncheck Hide small balances checkbox
+Then I can see all the tokens after unchecking checkbox
