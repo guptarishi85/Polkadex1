@@ -37,3 +37,33 @@ let page;
     const transPage = new transferPage_1.TransPage();
     await transPage.enterInSearchBox(enterInSearchBox);
 });
+(0, cucumber_1.When)('I click on Switch button', async function () {
+    const transPage = new transferPage_1.TransPage();
+    await transPage.clickOnSwtichButton();
+});
+(0, cucumber_1.Then)('Swich colour button is in pink colour', async function () {
+    await global.page.waitForTimeout(10000);
+    const transPage = new transferPage_1.TransPage();
+    await transPage.verifySwitchColour();
+});
+(0, cucumber_1.Then)('Switch colour button is in Green colour', async function () {
+    await global.page.waitForTimeout(10000);
+    const transPage = new transferPage_1.TransPage();
+    await transPage.sverifySwitchColour();
+});
+(0, cucumber_1.Then)('I can see text as S "From Trading account"', async function () {
+    const transPage = new transferPage_1.TransPage();
+    await transPage.SverifyToTradingAccountHeading();
+});
+(0, cucumber_1.Then)('I can see text as S "To funding account"', async function () {
+    const transPage = new transferPage_1.TransPage();
+    await transPage.SverifyToFundingAccountHeading();
+});
+(0, cucumber_1.Then)('I can see text as "From Funding account"', async function () {
+    const transPage = new transferPage_1.TransPage();
+    await transPage.verifyToFundingAccountHeading();
+});
+(0, cucumber_1.Then)('I can see text as "To Trading account"', async function () {
+    const transPage = new transferPage_1.TransPage();
+    await transPage.verifyToTradingAccountHeading();
+});

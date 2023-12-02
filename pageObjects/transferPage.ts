@@ -12,7 +12,14 @@ global.trasferheadingText=global.page.locator("//h2[contains(text(),'Move tokens
 global.AstrButton=global.page.locator("//p[normalize-space()='ASTR']");
 global.Hide0Balance=global.page.locator("//div[@class='sc-dccd9f95-0 gVJEHz']//*[@type='checkbox']");
 global.EnterDot=global.page.locator("//div[@class='sc-7ddc4ccd-0 psNiG']//input[@placeholder='Search']");
+global.switchbuttonClick=global.page.locator("//span[normalize-space()='Switch']");
+global.STradingAccountHeading=global.page.locator("//p[contains(text(),'Trading account')]");
+global.SFundingAccountHeading=global.page.locator("//p[contains(text(),'Funding account')]");
+global.TradingAccountHeading=global.page.locator("//p[@class='sc-b977ef78-2 eEkzwt'][normalize-space()='Trading account']");
+global.FundingAccountHeading=global.page.locator("//p[normalize-space()='Funding account']");
 }
+
+
 
 public transferbutton = async () => {
 await global.page.waitForTimeout(10000);
@@ -50,7 +57,52 @@ public enterInSearchBox = async (enterInSearchBox) => {
     await global.page.keyboard.press('Enter');
     await global.page.waitForTimeout(10000);
   } 
+public clickOnSwtichButton= async () => {
+    await global.switchbuttonClick.click();
+
+}
+public SverifyToTradingAccountHeading = async () => {
+    await global.page.waitForTimeout(10000);
+    expect(await global.STradingAccountHeading).toHaveText ('Trading account');
+  }
+
+  public SverifyToFundingAccountHeading= async () => {
+    await global.page.waitForTimeout(10000);
+    expect(await global.SFundingAccountHeading).toHaveText ('Funding account');
+  }
+
+  public verifyToFundingAccountHeading= async () => {
+    await global.page.waitForTimeout(10000);
+    expect(await global.FundingAccountHeading).toHaveText ('Funding account');
+  }
+
+    
+  public verifyToTradingAccountHeading= async () => {
+    await global.page.waitForTimeout(10000);
+    expect(await global.TradingAccountHeading).toHaveText ('Trading account');
+  }
   
+
+public verifySwitchColour= async () =>{
+    const docsLink = global.page.locator("//button[@class='sc-d66d2ad9-2 fHNtq']")
+    const color = await docsLink.evaluate((e) => {
+        return window.getComputedStyle(e).getPropertyValue("background-color")
+})
+    console.log(color);
+    expect(color).toBe("rgb(230, 0, 122)");
+}
+
+
+   public sverifySwitchColour= async () =>{
+    const sdocsLink = global.page.locator("//button[@class='sc-ba5e1865-2 dGcYuD']")
+    const scolor = await sdocsLink.evaluate((e) => {
+        return window.getComputedStyle(e).getPropertyValue("background-color")
+})
+    console.log(scolor);
+    expect(scolor).toBe("rgb(12, 165, 100)");
+}
+
+
 
 }
 module.exports = { TransPage };
