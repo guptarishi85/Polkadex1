@@ -1,5 +1,4 @@
 import { expect } from "@playwright/test";
-//import { page } from "../setup/hooks";
 const { setDefaultTimeout } = require('@cucumber/cucumber');
 export class HomePage {
   constructor() {
@@ -11,15 +10,20 @@ export class HomePage {
     global.buyButton = global.page.locator("//div[@class='sc-714be224-4 eQcFFW']");
     global.sellButton = global.page.locator("//div[@class='sc-714be224-4 dBqqUP']");
     global.percentButton = global.page.locator("//div[@class= 'sc-1af3737e-7 bToErj']");
-    //global.loginLink = global.page.locator("//a[@href = '/signIn']");
-
-  
+    global.tradingPairText = global.page.locator("//div[@class='sc-23b221d1-9 jWQwCq']/span[contains(text(),'DOT/USDT')]");
+ 
   }
   
   public navigateToHomePage = async () => {
     await global.page.goto(global.BASE_URL);
     setDefaultTimeout(parseInt(process.env.DEFAULT_TIMEOUT) || 60000);
+    await global.page.waitForTimeout(10000);
+  }
 
+  public navigateToExchangePage = async () => {
+    await global.page.goto(global.BASE_URL_EXCHANGE);
+    setDefaultTimeout(parseInt(process.env.DEFAULT_TIMEOUT) || 60000);
+    await global.page.waitForTimeout(10000);
   }
 
   public verifyButtonsAreVisible = async () => {
@@ -53,6 +57,12 @@ export class HomePage {
 
   public verifyDotUSDText = async () => {
     expect(await global.DotUSDText).toHaveText ('DOT/USDT');
+    await global.page.waitForTimeout(10000);
+    }
+
+  public verifyTradingPairText = async () => {
+    expect(await global.tradingPairText).toHaveText ('DOT/USDT');
+    await global.page.waitForTimeout(10000);
     }
   
   public verifyBuyButton = async () => {

@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HomePage = void 0;
 const test_1 = require("@playwright/test");
-//import { page } from "../setup/hooks";
 const { setDefaultTimeout } = require('@cucumber/cucumber');
 class HomePage {
     constructor() {
@@ -14,11 +13,17 @@ class HomePage {
         global.buyButton = global.page.locator("//div[@class='sc-714be224-4 eQcFFW']");
         global.sellButton = global.page.locator("//div[@class='sc-714be224-4 dBqqUP']");
         global.percentButton = global.page.locator("//div[@class= 'sc-1af3737e-7 bToErj']");
-        //global.loginLink = global.page.locator("//a[@href = '/signIn']");
+        global.tradingPairText = global.page.locator("//div[@class='sc-23b221d1-9 jWQwCq']/span[contains(text(),'DOT/USDT')]");
     }
     navigateToHomePage = async () => {
         await global.page.goto(global.BASE_URL);
         setDefaultTimeout(parseInt(process.env.DEFAULT_TIMEOUT) || 60000);
+        await global.page.waitForTimeout(10000);
+    };
+    navigateToExchangePage = async () => {
+        await global.page.goto(global.BASE_URL_EXCHANGE);
+        setDefaultTimeout(parseInt(process.env.DEFAULT_TIMEOUT) || 60000);
+        await global.page.waitForTimeout(10000);
     };
     verifyButtonsAreVisible = async () => {
         await (0, test_1.expect)(global.logo).toBeVisible();
@@ -45,6 +50,11 @@ class HomePage {
     };
     verifyDotUSDText = async () => {
         (0, test_1.expect)(await global.DotUSDText).toHaveText('DOT/USDT');
+        await global.page.waitForTimeout(10000);
+    };
+    verifyTradingPairText = async () => {
+        (0, test_1.expect)(await global.tradingPairText).toHaveText('DOT/USDT');
+        await global.page.waitForTimeout(10000);
     };
     verifyBuyButton = async () => {
         (0, test_1.expect)(await global.buyButton).toBeVisible();
