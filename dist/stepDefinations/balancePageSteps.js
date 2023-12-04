@@ -22,12 +22,12 @@ let Page;
     await global.page.getByRole('button', { name: 'Log In' }).click(); //locator("button[color='primary']").click();
     await global.page.waitForLoadState();
     //global.logger.info("Waiting for 2 seconds")
-    await global.page.waitForTimeout(2000);
+    await global.page.waitForTimeout(5000);
 });
 (0, cucumber_1.Then)('Login should be success', async function () {
     const sell = global.page.locator('div.sc-714be224-4.dBqqUP');
     await (0, test_1.expect)(sell).toBeVisible();
-    await global.page.waitForTimeout(20000);
+    await global.page.waitForTimeout(10000);
 });
 (0, cucumber_1.Then)('I click cross button on popup', async function () {
     const balPage = new balancePage_1.BalPage();
@@ -392,6 +392,6 @@ let Page;
 });
 (0, cucumber_1.Then)('Contact-us button is navigated to {string} page', async function (transferPage) {
     const balPage = new balancePage_1.BalPage();
-    await balPage.navigateToTransferPage();
+    await balPage.navigateToContactUsPage();
     return transferPage;
 });

@@ -1,15 +1,16 @@
-Feature: BalancePage_Pop-up_Transfer_checkbox verification
+Feature: Transfer Page_user is able to view the Warning message 
 
-As a user 
-I want to test
-Pop-up_Transfer_checkbox on Balances page
+ As a user 
+ I want to test
+ Polkadex Tranfer Page
 
 Background:
  Given I am on the home screen
  And I click on Start Trading button
  And I can see DOT/USTD Text on screen
 
-Scenario: User able to verify the Pop-up_Transfer_checkbox on Balances Screen
+
+Scenario: Verify user is able to view the Warning message  on transfer page
 And I click on login link
 And I enter the email as "hjose@4labsinc.com"
 And I enter the password as "Leena@2010"
@@ -39,6 +40,14 @@ Then I click on Next button on What is Deposit? popup
 Then I can see What is Withdrawal? popup
 Then I click on Next button on What is Withdrawal? popup
 Then I can see What is Transfer? popup
-And I am able to select Dont show again checkbox on What is Transfer? popup
-When I refresh the page
-Then I can see Balances page without popup
+Then I click on Done button on What is transfer? popup  
+Then I see text as "Available balance in your funding and trading account. on balance page"
+Then I click on Transfer button on Balances Page
+Then I can see heading as "Transfer" in Bold
+Then I can see text as "Move tokens between your Funding account and Trading account"
+And I can see radio button with Transfer to other Polkadex accounts on Transfer page is off
+When I click down arrow button near the token 
+Then I can get the list of tokens on right drawer
+Then I can select PDEX token from right drawer
+And I enter amount as "3" in amount field
+Then I can see warning message as "The amount you entered exceeds your balance"
