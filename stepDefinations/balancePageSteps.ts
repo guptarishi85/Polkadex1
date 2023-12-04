@@ -26,13 +26,13 @@ When('I click on the login button', async function () {
     await global.page.getByRole('button',{name:'Log In'}).click();     //locator("button[color='primary']").click();
     await global.page.waitForLoadState();
     //global.logger.info("Waiting for 2 seconds")
-    await global.page.waitForTimeout(2000);
+    await global.page.waitForTimeout(5000);
   });
 
   Then('Login should be success', async function () {
     const sell = global.page.locator('div.sc-714be224-4.dBqqUP');
     await expect(sell).toBeVisible();
-    await global.page.waitForTimeout(20000);
+    await global.page.waitForTimeout(10000);
 });
 
 Then('I click cross button on popup', async function() {
@@ -485,15 +485,6 @@ Then('balance page for Transfer button is navigated to {string} page', async fun
 
 Then('Contact-us button is navigated to {string} page', async function(transferPage:string) {
     const balPage = new BalPage();
-    await balPage.navigateToTransferPage();    
+    await balPage.navigateToContactUsPage();    
     return transferPage;
 });
-
-
-
-
-
-
-    
-
-

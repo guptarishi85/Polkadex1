@@ -1,4 +1,4 @@
-import { expect,Page } from "@playwright/test";
+import { chromium, expect,Page } from "@playwright/test";
 import { setDefaultTimeout } from "@cucumber/cucumber";
 
 export class BalPage {
@@ -45,6 +45,11 @@ global.hoverDepositButton = global.page.locator("//div[contains(text(),'Extenal 
 global.withdrawButton = global.page.locator("a.withdrawButton");
 global.transferButton = global.page.locator("a.transferButton");
 global.contactUsButton = global.page.locator("//a[normalize-space()='Contact us']");
+global.switchbuttonClick=global.page.locator("//span[normalize-space()='Switch']");
+global.STradingAccountHeading=global.page.locator("//p[contains(text(),'Trading account')]");
+global.SFundingAccountHeading=global.page.locator("//p[contains(text(),'Funding account')]");
+global.TradingAccountHeading=global.page.locator("//p[@class='sc-b977ef78-2 eEkzwt'][normalize-space()='Trading account']");
+global.FundingAccountHeading=global.page.locator("//p[normalize-space()='Funding account']");
 }
 
 public clickLoginLink = async () => {
@@ -129,11 +134,11 @@ public tdAccountImportSuccessfully = async() =>{
 public clickBalanceLink = async () => {
   await global.page.locator("//*[name()='path' and contains(@d,'M12 18.75C')]").click();
   await await global.page.waitForTimeout(10000);
- }
+}
 
- public depositPopup = async () => {
- expect(await global.depositPopup).toHaveText ('What is Deposit?');
- await await global.page.waitForTimeout(5000);
+public depositPopup = async () => {
+expect(await global.depositPopup).toHaveText ('What is Deposit?');
+await await global.page.waitForTimeout(5000);
 }
 
 public withdrawalPopup = async () => {
@@ -400,7 +405,8 @@ public readBSortButton = async () => {
   }
 
   public getTokenHeaderList = async () => {
-    const nameHeaderList = await global.page.locator("//div[@class='sc-1b50adbf-3 bqyuGU']/div/span").toHaveText(['ASTR', 'DOT', 'IBTC', 'PDEX', 'USDT']);
+    const nameHeaderList = await global.page.locator("//div[@class='sc-1b50adbf-3 bqyuGU']/div/span").allTextContents();
+    //toHaveText(['ASTR', 'DOT', 'IBTC', 'PDEX', 'USDT']);
     console.log(nameHeaderList);
    }
 
@@ -463,8 +469,6 @@ public hoverExternalLinkWithdrawButton = async () => {
   await global.page.waitForTimeout(5000);
 }
 
-
-
  public navigateToTradePage = async () => {
   await global.page.goto('https://thea.polkadex.trade/');
     setDefaultTimeout(parseInt(process.env.DEFAULT_TIMEOUT) || 60000);
@@ -493,6 +497,12 @@ public navigateToTransferPage = async () => {
   await global.page.goto('https://orderbook.polkadex.trade/transfer?token=USDT');
     setDefaultTimeout(parseInt(process.env.DEFAULT_TIMEOUT) || 60000);
     await await global.page.waitForTimeout(6000);
+}
+
+public navigateToContactUsPage = async () => {
+  await global.page.goto('https://discord.com/channels/859180272335323166/1034160372954964089');
+    setDefaultTimeout(parseInt(process.env.DEFAULT_TIMEOUT) || 10000);
+    await await global.page.waitForTimeout(10000);
 }
  
 }

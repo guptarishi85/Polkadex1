@@ -44,4 +44,4 @@ Then I click on Done button on What is transfer? popup
 Then I see text as "Available balance in your funding and trading account. on balance page"
 Then I can see "Contact us" Button on Balances Page
 When I click on Contactus button on Balances Page
-Then Contact-us button is navigated to "https://orderbook.polkadex.trade/transfer?token=USDT" page
+Then Contact-us button is navigated to "https://discord.com/channels/859180272335323166/1034160372954964089" page

@@ -47,14 +47,30 @@ Then I click on the Name Cloumn header
 Then I click on the Funding Account Cloumn header
 Then I click on the Trading Account Cloumn header
 Then I click on the In Orders Cloumn header
-Then I click Hide small balances checkbox
+When I click Hide small balances checkbox
+Then I can see all accounts with high balance only
+When I uncheck Hide small balances checkbox
+Then I can see all the tokens after unchecking checkbox
+And I can see Text as "Having Trouble?" on footer part
+And I can see Text as "Feel free to get in touch." on footer part
+And I can see the "Open tour" Button on Balances Page
+And I can see Text as "Deposit, Withdrawal, and Transfer differences" on footer part
+And I can see Text as "We'll guide you through these new processes on a quick tour." on footer part
+And I can see What is Deposit? popup
+And I click on Next button on What is Deposit? popup
+And I can see What is Withdrawal? popup
+And I click on Next button on What is Withdrawal? popup
+And I can see What is Transfer? popup
+And I click on Done button on What is transfer? popup  
+Then I can see "Deposit" Button on Balances Page
+When I hover on Deposit Button
+Then External link on Deposit button is displayed
+Then I can see "Withdraw" Button on Balances Page
+When I hover on Withdraw Button
+Then External link on Withdraw button is displayed
+Then I can see "Transfer" Button on Balances Page
 When I searched text "DOT" in search bar of overview Section
 Then searched item should display under overview Section
 Then I can see "Contact us" Button on Balances Page
-And I can see Text as "Having Trouble?" on footer part
-And I can see Text as "Feel free to get in touch." on footer part
-Then I can see the "Open tour" Button on Balances Page
-And I can see Text as "Deposit, Withdrawal, and Transfer differences" on footer part
-And I can see Text as "We'll guide you through these new processes on a quick tour." on footer part
-Then I can see "Deposit" Button on Balances Page
-Then I can see "Transfer" Button on Balances Page
+When I click on Contactus button on Balances Page
+Then Contact-us button is navigated to "https://discord.com/channels/859180272335323166/1034160372954964089" page

@@ -1,8 +1,8 @@
-Feature: Balances Page
+Feature: Balances Page Transfer Text verification
 
  As a user 
  I want to test
- Polkadex Balances Page
+ Polkadex Balances Page Transfer_Text_Click
 
 Background:
  Given I am on the home screen
@@ -10,7 +10,7 @@ Background:
  And I can see DOT/USTD Text on screen
 
 
-Scenario: Verify Import Button functionality and Balance Page functionalities
+Scenario: Verify Transfer_page_Text functionalities
 And I click on login link
 And I enter the email as "hjose@4labsinc.com"
 And I enter the password as "Leena@2010"
@@ -41,25 +41,9 @@ Then I can see What is Withdrawal? popup
 Then I click on Next button on What is Withdrawal? popup
 Then I can see What is Transfer? popup
 Then I click on Done button on What is transfer? popup  
-Then I see text as "Available balance in your funding and trading account. on balance page"
-Then I click on Transfer button on Balances Page
+Then I am able to view "Actions" Header Text on balances Page
+Then I can see "Transfer" Button on Balances Page
+When I click on Transfer button on Balances Page
+Then balance page for Transfer button is navigated to "https://orderbook.polkadex.trade/transfer?token=ASTR" page
+Then I can see heading as "Transfer" in Bold
 Then I can see text as "Move tokens between your Funding account and Trading account"
-And I can see radio button with Transfer to other Polkadex accounts on Transfer page is off
-Then I can see text as "From Funding account" 
-Then I can see text as "To Trading account"
-Then Switch colour button is in Green colour
-When I click on Switch button
-Then I can see text as "From Trading account"
-Then I can see text as "To funding account"
-Then Switch colour button is in pink colour
-Then I click on Switch button
-Then Switch colour button is in Green colour
-When I click down arrow button near the token 
-Then I can get the list of tokens on right drawer
-Then I can select PDEX token from right drawer
-And I enter amount as "3" in amount field
-Then I can see warning message as "The amount you entered exceeds your balance"
-And I enter "1" as amount in amount field
-Then I can see Transfer button is enable to do Transaction
-Then I searched text "DOT" in search bar of overview Section
-Then I am able to click on Transfer to other Polkadex accounts radio button
