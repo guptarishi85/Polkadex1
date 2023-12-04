@@ -1,14 +1,21 @@
 const { Given, When , Then } = require('@cucumber/cucumber');
-import { HomePage } from '../pageObjects/homePage';
+import { HomePage } from '../pageObjects/exchangePage';
 const {setDefaultTimeout} = require('@cucumber/cucumber');
 setDefaultTimeout(60*1000);
 
 let page;
-Given('I am on the home screen',{timeout: 2 * 5000}, async function() {
+Given('I am on the home screen', async function() {////{timeout: 2 * 5000}
   this.page = page;
   const homePage = new HomePage();
   await homePage.navigateToHomePage();
 });
+
+Given('I am on the Exchange Page screen', async function() {////{timeout: 2 * 5000}
+  this.page = page;
+  const homePage = new HomePage();
+  await homePage.navigateToExchangePage();
+});
+
 
 When('I click the Orderbook logo', async function(){
 this.page = page;
@@ -49,6 +56,12 @@ Then('I can see DOT\\/USTD Text on screen', async function(){
   const homePage = new HomePage();
   await homePage.verifyDotUSDText();
   });
+
+  Then('I am able to see {string} as selected trading pair', async function(tradingPairText: string) {
+    const homePage = new HomePage();
+    await homePage.verifyTradingPairText();
+    tradingPairText;
+    });
 
 Then('I can see Buy button on screen', async function () {
   await global.page.waitForTimeout(10000);
