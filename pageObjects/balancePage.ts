@@ -406,7 +406,6 @@ public readBSortButton = async () => {
 
   public getTokenHeaderList = async () => {
     const nameHeaderList = await global.page.locator("//div[@class='sc-1b50adbf-3 bqyuGU']/div/span").allTextContents();
-    //toHaveText(['ASTR', 'DOT', 'IBTC', 'PDEX', 'USDT']);
     console.log(nameHeaderList);
    }
 

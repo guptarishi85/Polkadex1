@@ -14,6 +14,7 @@ class HomePage {
         global.sellButton = global.page.locator("//div[@class='sc-714be224-4 dBqqUP']");
         global.percentButton = global.page.locator("//div[@class= 'sc-1af3737e-7 bToErj']");
         global.tradingPairText = global.page.locator("//div[@class='sc-23b221d1-9 jWQwCq']/span[contains(text(),'DOT/USDT')]");
+        global.arrowButton = global.page.locator("//button[@class='sc-23b221d1-5 eNPUlc']//*[local-name()='svg']//*[local-name()='path']");
     }
     navigateToHomePage = async () => {
         await global.page.goto(global.BASE_URL);
@@ -56,6 +57,14 @@ class HomePage {
         (0, test_1.expect)(await global.tradingPairText).toHaveText('DOT/USDT');
         await global.page.waitForTimeout(10000);
     };
+    getTradingPairList = async () => {
+        const tradingPairList = await global.page.locator("div.sc-23b221d1-23.fdpBqb").allTextContents();
+        console.log(tradingPairList);
+    };
+    viewGraph = async () => {
+        (0, test_1.expect)(await global.viewGraph).toBeVisible;
+        await global.page.waitForTimeout(5000);
+    };
     verifyBuyButton = async () => {
         (0, test_1.expect)(await global.buyButton).toBeVisible();
     };
@@ -89,6 +98,10 @@ class HomePage {
             global.buttonXpath = global.page.locator("//div[@class='sc-1af3737e-7 bToErj']/div[" + `${x}` + "]");
             global.buttonXpath.click();
         }
+    };
+    clickArrowButton = async () => {
+        await global.arrowButton.click();
+        await global.page.waitForTimeout(5000);
     };
 }
 exports.HomePage = HomePage;

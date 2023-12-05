@@ -15,6 +15,11 @@ Given('I am on the Exchange Page screen', async function () {
     const homePage = new exchangePage_1.HomePage();
     await homePage.navigateToExchangePage();
 });
+Then('I can see graph is diplayed on the screen', async function () {
+    await global.page.waitForTimeout(10000);
+    const homePage = new exchangePage_1.HomePage();
+    await homePage.viewGraph();
+});
 When('I click the Orderbook logo', async function () {
     this.page = page;
     const homePage = new exchangePage_1.HomePage();
@@ -67,6 +72,16 @@ Then('I can select {int}% button', async function (value) {
     await global.page.waitForTimeout(10000);
     const homePage = new exchangePage_1.HomePage();
     await homePage.clickPercentButton(value);
+});
+Then('I can see available trading pair as:', async function (tradingPairList) {
+    const homePage = new exchangePage_1.HomePage();
+    await homePage.getTradingPairList();
+    return tradingPairList;
+});
+When('I click on arrow button', async function () {
+    const homePage = new exchangePage_1.HomePage();
+    await homePage.clickArrowButton();
+    await global.page.waitForTimeout(5000);
 });
 function expect(homePage) {
     throw new Error('Function not implemented.');
