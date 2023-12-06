@@ -4,18 +4,23 @@ const {setDefaultTimeout} = require('@cucumber/cucumber');
 setDefaultTimeout(60*1000);
 
 let page;
-Given('I am on the home screen', async function() {////{timeout: 2 * 5000}
+Given('I am on the home screen', async function() {
   this.page = page;
   const homePage = new HomePage();
   await homePage.navigateToHomePage();
 });
 
-Given('I am on the Exchange Page screen', async function() {////{timeout: 2 * 5000}
+Given('I am on the Exchange Page screen', async function() {
   this.page = page;
   const homePage = new HomePage();
   await homePage.navigateToExchangePage();
 });
 
+Then('I can see graph is diplayed on the screen', async function(){
+  await global.page.waitForTimeout(10000);
+  const homePage = new HomePage();
+  await homePage.viewGraph();
+  });
 
 When('I click the Orderbook logo', async function(){
 this.page = page;
@@ -81,6 +86,37 @@ Then('I can select {int}% button', async function (value : number) {
   await homePage.clickPercentButton(value);
   });
 
+Then('I can see available trading pair as:', async function (tradingPairList: string) {
+  const homePage = new HomePage();
+  await homePage.getTradingPairList();
+  return tradingPairList;
+    });
+
+When('I click on arrow button', async function(){
+  const homePage = new HomePage();
+  await homePage.clickArrowButton();
+  await global.page.waitForTimeout(5000);
+  });
+
+  Then('I click on favourite button for {string} trading pair', async function (button1:any) {
+    const homePage = new HomePage();
+    await homePage.tradingpairsoptions();
+    return button1;
+    });
+
+    Then ('I click on favourite Icon near search bar', async function(){
+      const homePage = new HomePage();
+      await homePage.clickMainFavoriteButton();
+      await global.page.waitForTimeout(5000);
+      });
+  
+      Then ('I can see trading pairs are listed under favourite icon', async function(){
+      const homePage = new HomePage();
+      await homePage.favouriteItemList();
+      await global.page.waitForTimeout(5000);
+      });
+     
+     
 function expect(homePage: HomePage) {
   throw new Error('Function not implemented.');
 }
