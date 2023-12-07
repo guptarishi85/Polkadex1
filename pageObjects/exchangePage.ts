@@ -12,6 +12,7 @@ export class HomePage {
     global.percentButton = global.page.locator("//div[@class= 'sc-1af3737e-7 bToErj']");
     global.tradingPairText = global.page.locator("//div[@class='sc-23b221d1-9 jWQwCq']/span[contains(text(),'DOT/USDT')]");
     global.arrowButton = global.page.locator("//button[@class='sc-23b221d1-5 eNPUlc']//*[local-name()='svg']//*[local-name()='path']");
+   // global.favouriteButton=global.page.$$('div.sc-1957bb5e-0.lhmdGt > div.sc-1957bb5e-1.eXRxdo:first-child');    ')
   }
   
   public navigateToHomePage = async () => {
@@ -122,8 +123,50 @@ public clickArrowButton = async () => {
   await global.arrowButton.click();
   await global.page.waitForTimeout(5000);
      }
-  }
 
+
+     public tradingpairsoptions = async () => {
+      const elements = await global.page.$$('div.sc-23b221d1-18.gaFTEH > button.sc-23b221d1-21.jIhioH > div.sc-1957bb5e-0.lhmdGt');
+      let favoritesCount = 0;
+      for (const element of elements) 
+      {
+        if (favoritesCount >= 3) 
+        {
+          break; // Exit the loop once the first 3 items are favorited
+        }
+    
+        await element.click();
+        favoritesCount++;
+      }
+    
+    
+      
+      await await global.page.waitForTimeout(10000);
+      }
+
+    public clickMainFavoriteButton= async () => {
+      const elements = await global.page.$$('div.sc-1957bb5e-0.lhmdGt > div.sc-1957bb5e-1.hpOvcJ');
+      if (elements.length > 0) {
+        const firstElement = elements[0];
+        // Perform actions on the first located element
+        await firstElement.click(); 
+      }
+      await await global.page.waitForTimeout(10000);
+        }
+    
+      public favouriteItemList= async () => {
+        const elements = await global.page.$$("//div[@class='sc-23b221d1-23 fdpBqb']");
+        for (const element of elements) {
+          // Perform actions on each located element
+          const text = await element.textContent();
+          console.log("Text Content:", text); // Example action - printing text content
+          // Other actions...
+        }
+      
+
+
+  }
+}
 
 
 module.exports = { HomePage };

@@ -98,7 +98,25 @@ When('I click on arrow button', async function(){
   await global.page.waitForTimeout(5000);
   });
 
+  Then('I click on favourite button for {string} trading pair', async function (button1:any) {
+    const homePage = new HomePage();
+    await homePage.tradingpairsoptions();
+    return button1;
+    });
 
+    Then ('I click on favourite Icon near search bar', async function(){
+      const homePage = new HomePage();
+      await homePage.clickMainFavoriteButton();
+      await global.page.waitForTimeout(5000);
+      });
+  
+      Then ('I can see trading pairs are listed under favourite icon', async function(){
+      const homePage = new HomePage();
+      await homePage.favouriteItemList();
+      await global.page.waitForTimeout(5000);
+      });
+     
+     
 function expect(homePage: HomePage) {
   throw new Error('Function not implemented.');
 }
