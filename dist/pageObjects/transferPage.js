@@ -103,7 +103,7 @@ class TransPage {
     // expect(await global.FundingAccountHeading).toHaveText ('Funding account');
     // public verifyToTradingAccountHeading= async () => {await global.page.waitForTimeout(10000);
     // expect(await global.TradingAccountHeading).toHaveText ('Trading account');
-    // }
+    // }1
     verifySwitchColour = async () => {
         const docsLink = global.page.locator("//button[@class='sc-d66d2ad9-2 fHNtq']");
         const color = await docsLink.evaluate((e) => {

@@ -222,8 +222,6 @@ Then('searched item should display No result found under overview Section',async
     await balPage.noSearchedResultFound(); 
 });
 
-
-
 Then('searched item should display under overview Section', async function () {
     const balPage = new BalPage();
     await balPage.textAftersearch(); 

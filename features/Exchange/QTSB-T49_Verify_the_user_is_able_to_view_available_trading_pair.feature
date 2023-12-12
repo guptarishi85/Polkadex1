@@ -16,4 +16,10 @@ Then I can see available trading pair as:
 | DOT/USTD |
 | PDEX/USTD |
 
-
+When I click on "USDT" button 
+Then I can see available trading pair as:
+| PHA/USTD |
+| ASTR/USTD |
+| IBTC/USTD |
+| DOT/USTD |
+| PDEX/USTD |

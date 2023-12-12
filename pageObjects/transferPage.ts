@@ -132,7 +132,7 @@ public verifyToFundingAccountHeading= async () => {
   
 // public verifyToTradingAccountHeading= async () => {await global.page.waitForTimeout(10000);
 // expect(await global.TradingAccountHeading).toHaveText ('Trading account');
-// }
+// }1
 
 public verifySwitchColour= async () =>{
   const docsLink = global.page.locator("//button[@class='sc-d66d2ad9-2 fHNtq']")
