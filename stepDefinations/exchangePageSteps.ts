@@ -9,7 +9,6 @@ Given('I am on the home screen', async function() {
   this.page = page;
   const homePage = new HomePage();
   await homePage.navigateToHomePage();
-  //console.log
 });
 
 Given('I am on the Exchange Page screen', async function() {
@@ -38,7 +37,6 @@ Then('I see in title {string}', async function(title: string) {
   });
 
   When('I click on About link', async function(){
-  //  this.page = page;
   await global.page.waitForTimeout(20000);
   const homePage = new HomePage();
   await homePage.clickLink();
@@ -259,14 +257,7 @@ When('I click on Icon button', async function(){
       await homePage.clearSearchBar();
       });
 
-
-      
-
-      
-      
-
-      
-function expect(homePage: HomePage) {
+      function expect(homePage: HomePage) {
   throw new Error('Function not implemented.');
 }
 

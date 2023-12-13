@@ -9,6 +9,7 @@ Given('I am on the home screen', async function () {
     this.page = page;
     const homePage = new exchangePage_1.HomePage();
     await homePage.navigateToHomePage();
+    //console.log
 });
 Given('I am on the Exchange Page screen', async function () {
     this.page = page;
@@ -137,6 +138,7 @@ When('I hover on search button', async function () {
 });
 When('I entered "$$" as invalid coin in search bar', async function () {
     const homePage = new exchangePage_1.HomePage();
+    //await homePage.enterTTextSearch();
     await homePage.enterTTextSearch();
 });
 When('I searched "ASTR" as valid coin in search bar', async function () {
