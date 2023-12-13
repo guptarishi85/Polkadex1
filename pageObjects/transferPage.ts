@@ -19,7 +19,9 @@ global.enterAmountText = global.page.locator("//input[@placeholder='Enter an amo
 global.enableTransferButton = global.page.locator("//button[@type='submit']");
 global.transferradioText = global.page.locator("div.sc-c8178fd-5.fAcGvj span");
 global.warningMessageText = global.page.locator("div[class='sc-ba5e1865-4 kZmlcv'] p");
+global.clickMaxButton = global.page.locator("//button[normalize-space()='MAX']");
 }
+
 
 public transferbutton = async () => {
 await global.page.waitForTimeout(10000);
@@ -112,8 +114,8 @@ public disableTransferButton= async () => {
 
 public clickOnSwtichButton= async () => {
   await global.switchbuttonClick.click();
-
 }
+
 public verifyToTradingAccountHeading = async () => {
   await global.page.waitForTimeout(10000);
   expect(await global.TradingAccountHeading).toHaveText ('Trading account');
@@ -123,16 +125,6 @@ public verifyToFundingAccountHeading= async () => {
   await global.page.waitForTimeout(10000);
   expect(await global.FundingAccountHeading).toHaveText ('Funding account');
 }
-
-// public verifyToTradingAccountHeading= async () => {
-// await global.page.waitForTimeout(10000);
-// expect(await global.FundingAccountHeading).toHaveText ('Funding account');
-
-
-  
-// public verifyToTradingAccountHeading= async () => {await global.page.waitForTimeout(10000);
-// expect(await global.TradingAccountHeading).toHaveText ('Trading account');
-// }
 
 public verifySwitchColour= async () =>{
   const docsLink = global.page.locator("//button[@class='sc-d66d2ad9-2 fHNtq']")
@@ -155,6 +147,12 @@ public sverifySwitchColour= async () =>{
 public warningMessageText= async () => {
   expect(await global.warningMessageText).toBeVisible();
  }
+
+public clickMaxButton= async () => {
+  await global.clickMaxButton.click();
+}
+
+ 
 
 }
 
