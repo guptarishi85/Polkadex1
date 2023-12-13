@@ -4,11 +4,6 @@ const cucumber_1 = require("@cucumber/cucumber");
 const transferPage_1 = require("../pageObjects/transferPage");
 (0, cucumber_1.setDefaultTimeout)(60 * 1000);
 let page;
-// Then('I click on Transfer button on Balances Page', async function(){
-//     this.page = page;
-//     const transPage = new TransPage();
-//     await transPage.transferbutton();
-// });
 (0, cucumber_1.Then)('I can see text as "Move tokens between your Funding account and Trading account"', async function () {
     const transPage = new transferPage_1.TransPage();
     await transPage.trasferheadingText();
@@ -118,4 +113,8 @@ let page;
 (0, cucumber_1.Then)('I can see warning message as "The amount you entered exceeds your balance"', async function () {
     const transPage = new transferPage_1.TransPage();
     await transPage.warningMessageText();
+});
+(0, cucumber_1.When)('I click MAX button on transfer page', async function () {
+    const transPage = new transferPage_1.TransPage();
+    await transPage.clickMaxButton();
 });

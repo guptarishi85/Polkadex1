@@ -17,6 +17,7 @@ class TransPage {
         global.enableTransferButton = global.page.locator("//button[@type='submit']");
         global.transferradioText = global.page.locator("div.sc-c8178fd-5.fAcGvj span");
         global.warningMessageText = global.page.locator("div[class='sc-ba5e1865-4 kZmlcv'] p");
+        global.clickMaxButton = global.page.locator("//button[normalize-space()='MAX']");
     }
     transferbutton = async () => {
         await global.page.waitForTimeout(10000);
@@ -98,12 +99,6 @@ class TransPage {
         await global.page.waitForTimeout(10000);
         (0, test_1.expect)(await global.FundingAccountHeading).toHaveText('Funding account');
     };
-    // public verifyToTradingAccountHeading= async () => {
-    // await global.page.waitForTimeout(10000);
-    // expect(await global.FundingAccountHeading).toHaveText ('Funding account');
-    // public verifyToTradingAccountHeading= async () => {await global.page.waitForTimeout(10000);
-    // expect(await global.TradingAccountHeading).toHaveText ('Trading account');
-    // }1
     verifySwitchColour = async () => {
         const docsLink = global.page.locator("//button[@class='sc-d66d2ad9-2 fHNtq']");
         const color = await docsLink.evaluate((e) => {
@@ -122,6 +117,9 @@ class TransPage {
     };
     warningMessageText = async () => {
         (0, test_1.expect)(await global.warningMessageText).toBeVisible();
+    };
+    clickMaxButton = async () => {
+        await global.clickMaxButton.click();
     };
 }
 exports.TransPage = TransPage;
