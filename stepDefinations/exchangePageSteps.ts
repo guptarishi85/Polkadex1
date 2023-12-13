@@ -9,6 +9,7 @@ Given('I am on the home screen', async function() {
   this.page = page;
   const homePage = new HomePage();
   await homePage.navigateToHomePage();
+  //console.log
 });
 
 Given('I am on the Exchange Page screen', async function() {
