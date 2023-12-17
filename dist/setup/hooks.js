@@ -10,7 +10,8 @@ const options = {
 };
 BeforeAll(async () => {
     console.log('before all ...');
-    global.browser = await playwright['chromium'].launch(options);
+    global.browser = await playwright['chromium'].launch({ headless: false,
+        args: ['--window-size=1920,1040'] });
 });
 /*AfterAll(async () => {
     console.log('after all ...');
