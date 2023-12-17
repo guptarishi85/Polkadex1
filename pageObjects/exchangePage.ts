@@ -137,7 +137,7 @@ const buttons = global.page.locator("div:nth-child(3) > div >div.sc-23b221d1-20.
     
     public viewGraph = async () => {
       expect(await global.viewGraph).toBeVisible;
-      await global.page.waitForTimeout(5000);
+      await global.page.waitForTimeout(10000);
     }
     
   public verifyBuyButton = async () => {
@@ -224,17 +224,17 @@ public clickUSTDAllButton = async () => {
     
 public hoverSearchbutton = async () => {
   await global.page.locator("div > div.sc-7ddc4ccd-0.deryhW > button > div > div > svg").hover();
-  await global.page.waitForTimeout(10000);
+  await global.page.waitForTimeout(5000);
  }
 
  public enterTTextSearch= async () => {
   await global.page.locator("[placeholder='Search Markets..']").fill('$$');
-  await global.page.waitForTimeout(10000);
+  await global.page.waitForTimeout(5000);
  }
 
  public enterASTRTextSearch= async () => {
   await global.page.locator("[placeholder='Search Markets..']").fill('ASTR');
-  await global.page.waitForTimeout(10000);
+  await global.page.waitForTimeout(5000);
  }
 
  public textAftersearchResult = async () => {
@@ -248,13 +248,13 @@ const random =  await global.page.locator("//input[@id='order-price']").fill('0.
  }
  
 public  enterAmountBuy = async () => {
-const random =  await global.page.locator("#order-amount").fill('13');
-await global.page.waitForTimeout(10000);
+const random =  await global.page.locator("#order-amount").fill('201');
+await global.page.waitForTimeout(2000);
  }
 
 public  entersAmountBuy = async () => {
 const random =  await global.page.locator("#order-amount").fill('0.1');
-await global.page.waitForTimeout(10000);
+await global.page.waitForTimeout(2000);
  }
 
  public searchItemView= async () => {
@@ -286,6 +286,8 @@ public viewOrderbookBackgroundColor= async () => {
 })
 console.log(color);
 expect(color).toBe("rgb(12, 165, 100)");
+expect(color).toBe("rgb(230, 0, 122)");
+
 }
 
 public viewLimitOrderMenu= async () => {
@@ -301,7 +303,7 @@ public clickLimitOrderMenu= async () => {
 
 public clearSearchBar= async () => {
 await global.page.locator("[placeholder='Search Markets..']").fill('');;
- await global.page.waitForTimeout(10000);
+ await global.page.waitForTimeout(5000);
  }
 
 public getListLimitOrderMenu= async () => {
@@ -323,10 +325,7 @@ public getListLimitOrderMenu= async () => {
         await element.click();
         favoritesCount++;
       }
-    
-    
-      
-      await await global.page.waitForTimeout(10000);
+     await await global.page.waitForTimeout(10000);
       }
 
     public clickMainFavoriteButton= async () => {
@@ -342,15 +341,135 @@ public getListLimitOrderMenu= async () => {
       public favouriteItemList= async () => {
         const elements = await global.page.$$("//div[@class='sc-23b221d1-23 fdpBqb']");
         for (const element of elements) {
-          // Perform actions on each located element
           const text = await element.textContent();
           console.log("Text Content:", text); // Example action - printing text content
           // Other actions...
         }
-      
-
-
   }
+
+  public verifyButtonColor= async () =>{
+    const docsLink = global.page.locator("button[type='submit']")
+    const color = await docsLink.evaluate((e) => {
+        return window.getComputedStyle(e).getPropertyValue("background-color")
+  })
+    console.log(color);
+    expect(color).toBe("rgb(12, 165, 100)");
+  }
+
+  public verifyPinkButtonColor= async () =>{
+    const docsLink = global.page.locator("button[type='submit']")
+    const color = await docsLink.evaluate((e) => {
+        return window.getComputedStyle(e).getPropertyValue("background-color")
+  })
+    console.log(color);
+    expect(color).toBe("rgb(230, 0, 122)");
+  }
+
+public clicksubmitButton = async () => {
+  await global.page.locator("//button[@type='submit']").click();
+  await global.page.waitForTimeout(5000);
+}  
+
+public OrderPlacedPopup = async () => {
+  expect(await global.page.locator("div[role='alert'] div:nth-child(2)")).toBeVisible();
+  await global.page.waitForTimeout(10000);
+}
+
+public CancelorderPlacedList = async () => {
+    const buttons = global.page.locator('.sc-da7c8ccf-4.jLNFYK');
+    const buttonsCount = await buttons.count();
+    for (let i = 0; i < buttonsCount; i++) {
+    await buttons.nth(i).click();
+    }
+    await global.page.waitForTimeout(10000);
+     }
+
+public OrderPlacedList = async () => {
+  let ele = await global.page.locator(".sc-da7c8ccf-0.MtcLf").allTextContents();
+  await global.page.waitForTimeout(5000);
+  console.log(ele);
+}
+
+public scrolDownPage = async () => {
+  global.page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+  await global.page.waitForTimeout(5000);
+}
+
+public cancelledOrderPopup = async () => {
+  expect(await global.page.locator("//div[contains(text(),'Order cancelled: 0xb5ac2f192fade9cc16aa3131c0ac73b')]")).toBeVisible();
+  await global.page.waitForTimeout(10000);
+}
+
+public cancelledScreenMessage = async () => {
+  expect(await global.page.locator("//section[@class='sc-5feba810-0 jqlyWx']//p[1]")).toBeVisible();
+  await global.page.waitForTimeout(5000);
+}
+
+public clickLinks = async () => {
+  const buttons = global.page.locator('.sc-5feba810-4.OLBzg li');
+    const buttonsCount = await buttons.count();
+    for (let i = 0; i < buttonsCount; i++) {
+    await buttons.nth(i).click();
+    await global.page.waitForTimeout(2000);
+    
+    }
+    await global.page.waitForTimeout(10000);
+     }
+
+public orderHistory = async () => {
+  let ele = await global.page.locator(".infinite-scroll-component tr").allTextContents();
+  console.log(ele);
+  await global.page.waitForTimeout(10000);
+}
+
+public tradeHistory = async () => {
+  let ele = await global.page.locator(".sc-2424705b-0.GBQIU").allTextContents();
+  console.log(ele);
+  await global.page.waitForTimeout(10000);
+}
+
+public selectSRBoxbutton = async () => {
+  await global.page.locator("div:nth-child(2) >div:nth-child(1) > input:nth-child(1)").click();
+  await global.page.waitForTimeout(3000);
+}
+
+public hideOtherPairCheckBox = async () => {
+  await global.page.locator("div:nth-child(2) >div:nth-child(2) > input:nth-child(1)").click();
+  await global.page.waitForTimeout(3000);
+}
+
+public buyCheckBox = async () => {
+  await global.page.locator("div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > input:nth-child(1)").click();
+  await global.page.waitForTimeout(3000);
+}
+
+public sellCheckBox = async () => {
+  await global.page.locator("div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)").click();
+  await global.page.waitForTimeout(3000);
+}
+
+public clickOrderHistory = async () => {
+  await global.page.locator("//li[normalize-space()='Order History']").click();
+  await global.page.waitForTimeout(3000);
+}
+
+public clickTradeHistory = async () => {
+  await global.page.locator("//li[normalize-space()='Trade History']").click();
+  await global.page.waitForTimeout(3000);
+}
+
+public clickFunds = async () => {
+  await global.page.locator("//li[normalize-space()='Funds']").click();
+  await global.page.waitForTimeout(3000);
+}
+
+public clickOpenOrders = async () => {
+  await global.page.locator("//li[normalize-space()='Open Orders']").click();
+  await global.page.waitForTimeout(3000);
+}
+
+
+
 }
 
 module.exports = { HomePage };

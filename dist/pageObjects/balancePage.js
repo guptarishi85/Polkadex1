@@ -267,12 +267,10 @@ class BalPage {
     };
     readWithdrawalPopupCheckbox = async () => {
         (0, test_1.expect)(await global.depositCheckbox).toBeVisible();
-        //toHaveText("Don't show again");
         await await global.page.waitForTimeout(10000);
     };
     readDepositPopupCheckbox = async () => {
         (0, test_1.expect)(await global.depositCheckbox).toBeVisible();
-        //toHaveText("Don't show again");
         await await global.page.waitForTimeout(10000);
     };
     readDepositPopupNextButton = async () => {
@@ -301,9 +299,7 @@ class BalPage {
     reloadPage = async () => {
         await global.page.goto('https://orderbook.polkadex.trade/balances');
         (0, cucumber_1.setDefaultTimeout)(parseInt(process.env.DEFAULT_TIMEOUT) || 60000);
-        // global.page.keyboard.press('F5');
         await await global.page.waitForTimeout(6000);
-        // //global.page.reload();
     };
     balancesHeadingText = async () => {
         (0, test_1.expect)(await global.balancesHeadingText).toHaveText("Balances");
@@ -317,7 +313,6 @@ class BalPage {
     };
     readTransferPopupCheckbox = async () => {
         (0, test_1.expect)(await global.depositCheckbox).toBeVisible();
-        //toHaveText("Don't show again");
         await await global.page.waitForTimeout(10000);
     };
     viewSearchButton = async () => {

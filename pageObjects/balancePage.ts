@@ -327,13 +327,11 @@ public readWithdrawalPopupBackButton = async () => {
 
 public readWithdrawalPopupCheckbox = async () => {
   expect(await global.depositCheckbox).toBeVisible();
-  //toHaveText("Don't show again");
   await await global.page.waitForTimeout(10000);
 }
 
 public readDepositPopupCheckbox = async () => {
   expect(await global.depositCheckbox).toBeVisible();
-  //toHaveText("Don't show again");
   await await global.page.waitForTimeout(10000);
 }
 
@@ -366,11 +364,9 @@ public textFooter = async () => {
 public reloadPage = async () => {
     await global.page.goto('https://orderbook.polkadex.trade/balances');
     setDefaultTimeout(parseInt(process.env.DEFAULT_TIMEOUT) || 60000);
-    // global.page.keyboard.press('F5');
     await await global.page.waitForTimeout(6000);
-    // //global.page.reload();
-    
 }
+
 public balancesHeadingText = async () => {
   expect(await global.balancesHeadingText).toHaveText("Balances");
   await await global.page.waitForTimeout(10000);
@@ -386,7 +382,6 @@ public readTransferPopupBackButton = async () => {
 
 public readTransferPopupCheckbox = async () => {
   expect(await global.depositCheckbox).toBeVisible();
-  //toHaveText("Don't show again");
   await await global.page.waitForTimeout(10000);
 }
 
