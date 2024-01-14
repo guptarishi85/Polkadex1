@@ -144,6 +144,26 @@ When('I click on Icon button', async function(){
     await homePage.viewAvailableBalance();
     });
 
+  Then('I can see available balance for selected trading pair before buying the trade', async function(){
+    const homePage = new HomePage();
+    await homePage.viewAvailableBalanceBeforeBuyingTrade();
+    });
+
+  Then('I can see available balance for selected trading pair after buying the trade', async function(){
+    const homePage = new HomePage();
+    await homePage.viewAvailableBalancesAfterBuyingTrade();
+    });
+
+  Then('I can see Available balance for selected trading pair under Available colomn', async function(){
+    const homePage = new HomePage();
+    await homePage.viewAvailableBalancesInFunds();
+    });
+
+  Then('I can see available balance on buy page is same as available balance on funds page', async function(){
+    const homePage = new HomePage();
+    await homePage.compareAvailableBalance();
+    });
+    
   Then('I can see Order placed popup on the top right screen', async function(){
     const homePage = new HomePage();
     await homePage.OrderPlacedPopup();
