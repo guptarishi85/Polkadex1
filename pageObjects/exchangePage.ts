@@ -104,7 +104,7 @@ export class HomePage {
       const availableBalanceBeforeBuyingTrade = await global.page.locator('span.sc-1af3737e-3.dRfAHk span').allTextContents();
       await global.page.waitForTimeout(7000);
       strBefore = availableBalanceBeforeBuyingTrade[0]+availableBalanceBeforeBuyingTrade[1];
-      console.log("Rishi:  " +strBefore);
+      console.log("strBefore:  " +strBefore);
       //console.log(availableBalanceBeforeBuyingTrade);
     }
   
@@ -112,47 +112,26 @@ export class HomePage {
       const availableBalanceAfterBuyingTrade = await global.page.locator('span.sc-1af3737e-3.dRfAHk span').allTextContents();
       await global.page.waitForTimeout(7000);
       strAfter = availableBalanceAfterBuyingTrade[0]+availableBalanceAfterBuyingTrade[1];
-      console.log("Rishi:  " +strAfter);
+      console.log("strAfter:  " +strAfter);
       //console.log(availableBalanceAfterBuyingTrade);
     }
 
-    public compareAvailableBalance= async () => {
+public compareAvailableBalance= async () => {
 console.log("strAfter: ", +strAfter);
 console.log("strBefore: ", + strBefore);
 console.log("strAvailableBalancesInFunds :", +strAvailableBalancesInFunds);
 let strAvailableBalancesInFundsRoundOff:number  = parseFloat(strAvailableBalancesInFunds);
 let n = strAvailableBalancesInFundsRoundOff.toFixed(4);
 console.log(n);
-//var a = 5.467;
-//var truncated = truncateDecimals(a, 2);
 
 let strAfterRoundOff:number  = parseFloat(strAfter);
 let n1 = strAfterRoundOff.toFixed(3);
 console.log(n1);
 expect(n1).toEqual(expect.stringContaining(n));
 //expect(strAfter).toEqual(n);
-  ///    let availableBalanceAfterBuyingTrade = await global.page.locator('span.sc-1af3737e-3.dRfAHk span').allTextContents();
-   //   console.log("availableBalanceAfterBuyingTrade :" +availableBalanceAfterBuyingTrade);
-   //   let viewAvailableBalancesInFunds = await global.page.locator('tr:nth-child(5) >td:nth-child(2) > div > span').allTextContents();
-      //number n1 = Number(viewAvailableBalancesInFunds);
-  //    console.log("viewAvailableBalancesInFunds :" +viewAvailableBalancesInFunds);
-  //          let result= expect(viewAvailableBalancesInFunds).toEqual(strAfter);
-  //          console.log(result);
-      
-      //  let viewAvailableBalancesInFunds1:number  = parseFloat(viewAvailableBalancesInFunds);
-   
-      //console.log("Gajraj: " +n);
-      //let n2 = 456.123456;     
-      //let n = expect(n).toHaveText(str);
-      //expect(viewAvailableBalancesInFunds).stringContaining(availableBalanceAfterBuyingTrade);
-      //expect(viewAvailableBalancesInFunds).toEqual(expect.stringContaining(availableBalanceAfterBuyingTrade));
-      //console.log("roundoff: " +n);
-      
   }
     
-  //expect(value).stringContaining()
-    
-  public view24hChangeAmount = async () => {
+public view24hChangeAmount = async () => {
       const element = await global.page.locator('p.sc-a5742073-2.dZBGrX').allTextContents();
       console.log(element);
   }
