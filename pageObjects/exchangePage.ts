@@ -121,7 +121,7 @@ console.log("strAfter: ", +strAfter);
 console.log("strBefore: ", + strBefore);
 console.log("strAvailableBalancesInFunds :", +strAvailableBalancesInFunds);
 let strAvailableBalancesInFundsRoundOff:number  = parseFloat(strAvailableBalancesInFunds);
-let n = strAvailableBalancesInFundsRoundOff.toFixed(4);
+let n = strAvailableBalancesInFundsRoundOff.toFixed(3);
 console.log(n);
 
 let strAfterRoundOff:number  = parseFloat(strAfter);
