@@ -1,10 +1,10 @@
-Feature: Exchange Page_Smoke Test
+Feature: Exchange Page_Funds Comparison Test of Exchange Place
  
  As a user 
  I want to test
  Polkadex Exchange Page
 
-Scenario:Verify_Smoke Test of Exchange Place
+Scenario:Verify_Funds Comparison Test of Exchange Place
 Given I am on the home screen
 And I click on Start Trading button
 And I can see DOT/USTD Text on screen
