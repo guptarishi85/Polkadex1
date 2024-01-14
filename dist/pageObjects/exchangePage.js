@@ -3,6 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.HomePage = void 0;
 const test_1 = require("@playwright/test");
 const { setDefaultTimeout } = require('@cucumber/cucumber');
+//import { expect } from "chai"; 
+let strAfter;
+let strBefore;
+let strAvailableBalancesInFunds;
 class HomePage {
     constructor() {
         global.logo = global.page.locator("//a[@class='sc-45d90ffc-30 clJkmP']//*[name() ='path'][2]");
@@ -72,6 +76,41 @@ class HomePage {
     viewAvailableBalance = async () => {
         const buttons = await global.page.locator('span.sc-1af3737e-3.dRfAHk span').allTextContents();
         console.log(buttons);
+    };
+    viewAvailableBalancesInFunds = async () => {
+        const viewAvailableBalancesInFunds = await global.page.locator('tbody tr:nth-child(4) td:nth-child(2) div:nth-child(1) span:nth-child(1)').allTextContents();
+        console.log(viewAvailableBalancesInFunds);
+        strAvailableBalancesInFunds = viewAvailableBalancesInFunds;
+        console.log("viewAvailableBalancesInFunds :" + viewAvailableBalancesInFunds);
+        console.log("strAvailableBalancesInFunds", +strAvailableBalancesInFunds);
+        await global.page.waitForTimeout(7000);
+    };
+    viewAvailableBalanceBeforeBuyingTrade = async () => {
+        const availableBalanceBeforeBuyingTrade = await global.page.locator('span.sc-1af3737e-3.dRfAHk span').allTextContents();
+        await global.page.waitForTimeout(7000);
+        strBefore = availableBalanceBeforeBuyingTrade[0] + availableBalanceBeforeBuyingTrade[1];
+        console.log("strBefore:  " + strBefore);
+        //console.log(availableBalanceBeforeBuyingTrade);
+    };
+    viewAvailableBalancesAfterBuyingTrade = async () => {
+        const availableBalanceAfterBuyingTrade = await global.page.locator('span.sc-1af3737e-3.dRfAHk span').allTextContents();
+        await global.page.waitForTimeout(7000);
+        strAfter = availableBalanceAfterBuyingTrade[0] + availableBalanceAfterBuyingTrade[1];
+        console.log("strAfter:  " + strAfter);
+        //console.log(availableBalanceAfterBuyingTrade);
+    };
+    compareAvailableBalance = async () => {
+        console.log("strAfter: ", +strAfter);
+        console.log("strBefore: ", +strBefore);
+        console.log("strAvailableBalancesInFunds :", +strAvailableBalancesInFunds);
+        let strAvailableBalancesInFundsRoundOff = parseFloat(strAvailableBalancesInFunds);
+        let n = strAvailableBalancesInFundsRoundOff.toFixed(4);
+        console.log(n);
+        let strAfterRoundOff = parseFloat(strAfter);
+        let n1 = strAfterRoundOff.toFixed(3);
+        console.log(n1);
+        (0, test_1.expect)(n1).toEqual(test_1.expect.stringContaining(n));
+        //expect(strAfter).toEqual(n);
     };
     view24hChangeAmount = async () => {
         const element = await global.page.locator('p.sc-a5742073-2.dZBGrX').allTextContents();
